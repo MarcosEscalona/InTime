@@ -12,8 +12,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">            
-            <li><a href="#">Acerca</a></li>
-            <li><a href="#">Login</a></li>            
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

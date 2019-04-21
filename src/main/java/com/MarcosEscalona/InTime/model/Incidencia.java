@@ -5,8 +5,11 @@ public class Incidencia {
 	private int id;
 	private Empleado empleado;
 	public Empleado gestor;
+	//Fecha sobre la que se comunica la incidencia
 	private int fecha;
+	// 1 vacaciones, 2 enfermedad, 3 otras ausencias, 4 exento por errores en el marcaje
 	private int tipo;
+	// Estado de la incidencia: 0 en espera, 1 aceptada, 2 denegada
 	private int estado;
 	
 	public int getId() {

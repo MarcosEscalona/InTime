@@ -7,8 +7,8 @@
 <title>Detalle del empleado</title>
 </head>
 <body>
-	<h1>Titulo de la Pelicula ${  titulo}</h1>
-	<h2>Duracion ${duracion } min.</h2>
-	<h2>Precio $ ${precio }</h2>
+	<h1>Nombre del Empleado ${  nombre}</h1>
+	<h2>Apellido 1 del Empleado ${apellido1 }</h2>
+	<h2>Hoy es ${fechaActual }</h2>
 </body>
 </html>

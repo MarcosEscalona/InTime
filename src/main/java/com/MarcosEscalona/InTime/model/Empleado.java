@@ -9,12 +9,23 @@ public class Empleado {
 	private String NIF;
 	private String nombre;
 	private String apellido1;
+	private String apellido2;
 	private Date fechaAltaEmpresa;
 	private Date fechaBajaEmpresa;
 	private String imagen;
-	// Matriz para registrar fichajes desde el 01/01/2019 durante 4 años, columna 1 es el día, columna 2 es hora entrada
-	// columna 3 es hora de salida, columna 4 es estado (0 activo, 1 vacaciones, 2 enfermedad, 3 incidencia que impide fichar)
+	// Matriz para registrar fichajes desde el 01/01/2019 durante 2000 días, columna 1 es el día, columna 2 es hora entrada
+	// columna 3 es hora de salida, columna 4 es estado ese día (0 activo, 1 vacaciones, 2 enfermedad, 3 otras ausencias, 4 exento por errores en el marcaje)
 	private int[][] calendario = new int[2000][4];
+	
+	
+	
+	public String getApellido2() {
+		return apellido2;
+	}
+
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
+	}
 	
 	public int getCalendarioValor(int fila, int columna) {
 		return calendario[fila][columna];
