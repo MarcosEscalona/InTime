@@ -5,13 +5,23 @@ public class Incidencia {
 	private int id;
 	private Empleado empleado;
 	public Empleado gestor;
-	//Fecha sobre la que se comunica la incidencia
-	private int fecha;
+	//Fechas de inicio y final sobre la que se comunica la incidencia
+	private String fechaComienzo;
+	private String fechaFin;
 	// 1 vacaciones, 2 enfermedad, 3 otras ausencias, 4 exento por errores en el marcaje
 	private int tipo;
 	// Estado de la incidencia: 0 en espera, 1 aceptada, 2 denegada
 	private int estado;
+	private String comentario;
 	
+	
+	
+	public String getComentario() {
+		return comentario;
+	}
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
 	public int getId() {
 		return id;
 	}
@@ -30,11 +40,21 @@ public class Incidencia {
 	public void setGestor(Empleado gestor) {
 		this.gestor = gestor;
 	}
-	public int getFecha() {
-		return fecha;
+
+	
+	
+	
+	public String getFechaComienzo() {
+		return fechaComienzo;
 	}
-	public void setFecha(int fecha) {
-		this.fecha = fecha;
+	public void setFechaComienzo(String fechaComienzo) {
+		this.fechaComienzo = fechaComienzo;
+	}
+	public String getFechaFin() {
+		return fechaFin;
+	}
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	public int getTipo() {
 		return tipo;
@@ -48,6 +68,15 @@ public class Incidencia {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+	
+	@Override
+	public String toString() {
+		return "Incidencia [id=" + id + ", empleado=" + empleado + ", gestor=" + gestor + ", fechaComienzo="
+				+ fechaComienzo + ", fechaFin=" + fechaFin + ", tipo=" + tipo + ", estado=" + estado + ", comentario="
+				+ comentario + "]";
+	}
+	
+
 
 	
 

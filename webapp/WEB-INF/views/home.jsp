@@ -87,30 +87,30 @@
 							<tbody>
 								<tr>
 									<th><a class="btn btn-success"
-										href="detail?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="fichajes/entradaFichaje?idEmpleado=${empleado.id }&fecha=${fechaActual}"
 										role="button">Fichaje diario de entrada</a></th>
 								</tr>
 								<tr>
 									<th><a class="btn btn-danger"
-										href="detail?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="fichajes/salidaFichaje?idEmpleado=${empleado.id }&fecha=${fechaActual}"
 										role="button">Fichaje diario de salida</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-info"
-										href="detail?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="fichajes/historicoFichaje?idEmpleado=${empleado.id }"
 										role="button">Consultar histórico de fichajes</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-warning"
-										href="detail?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="incidencias/generarIncidencia?idEmpleado=${empleado.id }"
 										role="button">Crear incidencia</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-primary"
-										href="detail?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="gestionaIncidencia?idEmpleado=${empleado.id }&fecha=${fechaActual}"
 										role="button">Gestionar mis incidencias</a></th>
 
 								</tr>
