@@ -29,6 +29,7 @@
 				<span class="label label-default">FICHA PERSONAL</span>
 			</h2>
 		</div>
+		
 
 		<!-- Marketing messaging -->
 		<div class="container marketing">
@@ -110,7 +111,7 @@
 								</tr>
 								<tr>
 									<th><a class="btn btn-primary"
-										href="gestionaIncidencia?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="incidencias/gestionaIncidenciaEmpleado?idEmpleado=${empleado.id }"
 										role="button">Gestionar mis incidencias</a></th>
 
 								</tr>

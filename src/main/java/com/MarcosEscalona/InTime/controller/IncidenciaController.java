@@ -1,47 +1,77 @@
 package com.MarcosEscalona.InTime.controller;
 
 import com.MarcosEscalona.InTime.model.Incidencia;
+import com.MarcosEscalona.InTime.service.IIncidenciaService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/incidencias")
 public class IncidenciaController {
 
+		@Autowired
+		private IIncidenciaService serviceIncidencia;
 		
 		@RequestMapping(value="/generarIncidencia", method=RequestMethod.GET)
-		public String generaIncidencia(Model model, @RequestParam("idEmpleado") int idEmpleado) {
+		public String generaIncidencia(Model model, @RequestParam("idEmpleado") int idEmpleado, @ModelAttribute Incidencia incidencia) {
+				
+				incidencia.setIdEmpleadoGenera(idEmpleado);
 				return "incidencias/formGeneraIncidencia";
 		}
 		
-		@PostMapping(value="/guardarIncidencia")
+		@RequestMapping(value="/gestionaIncidenciaEmpleado", method=RequestMethod.GET)
+		public String gestionaIncidenciaEmpleado(Model model, @RequestParam("idEmpleado") int idEmpleado) {
+				
+				model.addAttribute("idEmpleado", idEmpleado);
+				return "incidencias/formGestionaIncidenciaEmpleado";
+		}
 		
+		@PostMapping(value="/guardarIncidencia")
 		// Fechas en YYYY-MM-DD
-		public String guardarIncidencia(@RequestParam("fechaComienzo") String fechaComienzo, @RequestParam("fechaFin") String fechaFin, @RequestParam("tipo") String tipo, @RequestParam("comentario") String comentario ) {
-				
-				Incidencia incidencia = new Incidencia();
-				
-				incidencia.setFechaComienzo(fechaComienzo);
-				incidencia.setFechaFin(fechaFin);
-				incidencia.setEstado(0);
-				incidencia.setComentario(comentario);
-				
-				switch(tipo) {
-					case "Vacaciones": incidencia.setTipo(1);
-					case "Baja medica": incidencia.setTipo(2);
-					case "Otras ausencias": incidencia.setTipo(3);
-					case "Errores en el marcaje": incidencia.setTipo(4);
-					default: incidencia.setTipo(-1);
+		public String guardarIncidencia(@ModelAttribute Incidencia incidencia, BindingResult erroresBinding, RedirectAttributes rAttributes) {
+						
+				for (ObjectError error : erroresBinding.getAllErrors()) {
+					System.out.println(error.getDefaultMessage());
 				}
-				
-				// Guardar objeto en BD, tras definir id y empleado que genera y empleado gestor (inicialmente por defecto)
 			
+				if (erroresBinding.hasErrors()) {
+					return "incidencias/formGeneraIncidencia";
+				}
+			
+				incidencia.setEstado(0);
+				incidencia.setIdEmpleadoGestor(-1); //Aún no asignado
+				// Falta definir, para cada INC, el id del empleado que genera
+					
+				serviceIncidencia.guardar(incidencia);
+				// Guardar objeto en BD, hallando método para definir número id de incidencia
+				
 
-				return "incidencias/formGeneraIncidencia";
+				rAttributes.addFlashAttribute("mensaje", "Incidencia registrada correctamente");
+				rAttributes.addAttribute("idEmpleado", incidencia.getIdEmpleadoGenera());
+			
+				return "redirect:/incidencias/generarIncidencia";
+		}
+		
+		@InitBinder
+		public void initBinder(WebDataBinder binder) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 		}
 		
 }

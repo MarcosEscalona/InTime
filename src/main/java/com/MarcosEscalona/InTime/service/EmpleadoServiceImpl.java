@@ -48,4 +48,15 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return lista;
 	}
 
+
+	@Override
+	public Empleado buscarPorID(int idEmpleado) {
+		for(Empleado e: lista) {
+			if (e.getId() == idEmpleado) {
+				return e;
+			}
+		}
+		return null;
+	}
+
 }

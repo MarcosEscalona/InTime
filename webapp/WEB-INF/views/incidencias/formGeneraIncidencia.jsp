@@ -1,4 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Creacion de Noticias</title>
+<title>Generación de incidencia</title>
 <spring:url value="/resources" var="urlPublic"></spring:url>
+<spring:url value="/incidencias/guardarIncidencia" var="urlForm"></spring:url>
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
@@ -29,41 +34,65 @@
 				<span class="label label-default">GENERACIÓN DE INCIDENCIA</span>
 			</h2>
 		</div>
+		
+      <c:if test="${mensaje!=null }">
+      	
+      	<div class='alert alert-success' role="alert">${ mensaje}</div>
+      	
+      </c:if>
+
+		<spring:hasBindErrors name="incidencia">
+			<div class='alert alert-danger' role='alert'>
+				Existen los siguientes errores a corregir:
+				<ul>
+					<c:forEach var="error" items="${errors.allErrors}">
+						<li><spring:message message="${error}" /></li>
+					</c:forEach>
+				</ul>
+			</div>
+		</spring:hasBindErrors>
 
 		<hr class="featurette-divider">
 
-		<spring:url value="/incidencias/guardarIncidencia" var="urlForm"></spring:url>
-		<form action="${urlForm }" method="post">
+		${incidencia }
+		<form:form action="${urlForm }" method="post" modelAttribute="incidencia">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="form-group">
-						<label for="titulo">Fecha de comienzo de la incidencia</label> <input
-							type="date" id="fechaComienzo" name="fechaComienzo" required="required" />
+						<label for="titulo">Código ID Empleado</label> 
+						<form:input type="text" path="idEmpleadoGenera" id="idEmpleadoGenera" readonly="readonly"  />
+					</div>
+				</div>
+				
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="titulo">Fecha de comienzo</label> <form:input
+							type="date" id="fechaComienzo" path="fechaComienzo" required="required" />
 
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="titulo">Fecha de fin de la incidencia</label> <input
-								type="date" id="fechaFin" name="fechaFin" required="required" />
+							<label for="titulo">Fecha de finalización</label> <form:input
+								type="date" id="fechaFin" path="fechaFin" required="required" />
 
 						</div>
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="tipo">Tipo</label> <select id="tipo" name="tipo"
+							<label for="tipo">Tipo</label> <form:select id="tipo" path="tipo"
 								class="form-control">
-								<option value="Vacaciones">Vacaciones</option>
-								<option value="Baja">Baja medica</option>
-								<option value="Otras">Otras ausencias</option>
-								<option value="Errores">Errores en el marcaje</option>
-							</select>
+								<form:option value="Vacaciones">Vacaciones</form:option>
+								<form:option value="Baja">Baja medica</form:option>
+								<form:option value="Otras">Otras ausencias</form:option>
+								<form:option value="Errores">Errores en el marcaje</form:option>
+							</form:select>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-10">
+					<div class="col-sm-12">
 						<div class="form-group">
 							<label for="detalle">Comentario</label>
 							<textarea class="form-control" name="comentario" id="comentario"
@@ -73,7 +102,9 @@
 				</div>
 
 				<button type="submit" class="btn btn-danger">Guardar</button>
-		</form>
+		</form:form>
+
+		<a class="btn btn-info" href="/InTime/" role="button">Volver</a>
 
 		<hr class="featurette-divider">
 
