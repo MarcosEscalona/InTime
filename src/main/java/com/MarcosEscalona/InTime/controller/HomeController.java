@@ -23,11 +23,6 @@ public class HomeController {
 	private	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String goHome(){
-		return "home";
-	}
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 		
 		List<Empleado> empleados = serviceEmpleado.buscarEmpleado();
@@ -35,6 +30,11 @@ public class HomeController {
 		model.addAttribute("empleados", empleados);
 		model.addAttribute("fechaActual", dateFormat.format(new Date()));
 		return "home";
+	}
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String InTime() {
+		return "frontal";
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)

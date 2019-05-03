@@ -1,6 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Bienvenido a InTime</title>
+<title>Sitio personal</title>
 <spring:url value="/resources" var="urlPublic" />
 <spring:url value="/" var="urlRoot" />
 <link rel="stylesheet"
@@ -30,6 +32,11 @@
 			</h2>
 		</div>
 		
+		<c:if test="${mensaje!=null }">
+      	
+      		<div class='alert alert-success' role="alert">${ mensaje}</div>
+      	
+      	</c:if>
 
 		<!-- Marketing messaging -->
 		<div class="container marketing">
@@ -38,19 +45,14 @@
 
 				<c:forEach items="${empleados }" var="empleado">
 
-					<div class="col-sm-4">
-						<img class="img-rounded"
-							src="${urlPublic}/images/${empleado.imagen}"
-							alt="Generic placeholder image" width="200" height="250">
-					</div>
 
 
 
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<table class="table">
 							<tbody>
 								<tr>
-									<th scope="col text-right">Id Empleado</th>
+									<th scope="col">Id Empleado</th>
 									<th scope="col"><span class="label label-default">${empleado.id }</span></th>
 								</tr>
 								<tr>
@@ -82,13 +84,13 @@
 
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 
 						<table class="table">
 							<tbody>
 								<tr>
 									<th><a class="btn btn-success"
-										href="fichajes/entradaFichaje?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="fichajes/entradaFichaje?idEmpleado=${empleado.id }"
 										role="button">Fichaje diario de entrada</a></th>
 								</tr>
 								<tr>

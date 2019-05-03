@@ -1,5 +1,8 @@
 package com.MarcosEscalona.InTime.service;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.MarcosEscalona.InTime.model.Incidencia;
@@ -22,6 +25,18 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 	public Incidencia buscarIncidenciaporId() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<String> buscarTipoIncidencia() {
+		
+		List<String> tipoIncidencias = new LinkedList<>();
+		tipoIncidencias.add("Vacaciones");
+		tipoIncidencias.add("Baja medica");
+		tipoIncidencias.add("Otras ausencias");
+		tipoIncidencias.add("Errores en el marcaje");
+		
+		return tipoIncidencias;
 	}
 
 

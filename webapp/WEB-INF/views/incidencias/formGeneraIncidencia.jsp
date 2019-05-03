@@ -54,13 +54,12 @@
 
 		<hr class="featurette-divider">
 
-		${incidencia }
 		<form:form action="${urlForm }" method="post" modelAttribute="incidencia">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="form-group">
 						<label for="titulo">Código ID Empleado</label> 
-						<form:input type="text" path="idEmpleadoGenera" id="idEmpleadoGenera" readonly="readonly"  />
+						<form:input type="text" path="idEmpleadoGenera" id="idEmpleadoGenera" readonly="true"  />
 					</div>
 				</div>
 				
@@ -81,12 +80,9 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="tipo">Tipo</label> <form:select id="tipo" path="tipo"
-								class="form-control">
-								<form:option value="Vacaciones">Vacaciones</form:option>
-								<form:option value="Baja">Baja medica</form:option>
-								<form:option value="Otras">Otras ausencias</form:option>
-								<form:option value="Errores">Errores en el marcaje</form:option>
+							<label for="tipo">Tipo</label>
+							 <form:select id="tipo" path="tipo"
+								class="form-control" items= "${tiposIncidencia }">
 							</form:select>
 						</div>
 					</div>
@@ -95,8 +91,8 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label for="detalle">Comentario</label>
-							<textarea class="form-control" name="comentario" id="comentario"
-								rows="10"></textarea>
+							<form:textarea class="form-control" path="comentario" id="comentario"
+								rows="3"></form:textarea>
 						</div>
 					</div>
 				</div>
@@ -104,7 +100,7 @@
 				<button type="submit" class="btn btn-danger">Guardar</button>
 		</form:form>
 
-		<a class="btn btn-info" href="/InTime/" role="button">Volver</a>
+		<a class="btn btn-info" href="/InTime/home" role="button">Volver</a>
 
 		<hr class="featurette-divider">
 

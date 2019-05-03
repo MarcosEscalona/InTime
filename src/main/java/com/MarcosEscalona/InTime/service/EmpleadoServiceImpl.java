@@ -59,4 +59,19 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return null;
 	}
 
+
+	@Override
+	public void fichajeEntrada(int idEmpleado) {
+		// Aquí la lógica para registrar el fichaje de entrada de un empleado
+		System.out.println("Fichaje de entrada registrado correctamente");
+		
+	}
+
+
+	@Override
+	public void fichajeSalida(int idEmpleado) {
+		// Aquí la lógica para registrar el fichaje de salida de un empleado
+		System.out.println("Fichaje de salida registrado correctamente");
+	}
+
 }

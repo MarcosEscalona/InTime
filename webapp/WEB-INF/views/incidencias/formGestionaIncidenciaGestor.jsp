@@ -1,6 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Gestión de incidencias (empleado)</title>
+<title>Gestión de incidencias (gestor)</title>
 <spring:url value="/resources" var="urlPublic"></spring:url>
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -28,7 +27,7 @@
 
 		<div class="row">
 			<h2 class="text text-center">
-				<span class="label label-default">GESTIÓN DE INCIDENCIAS</span>
+				<span class="label label-default">GESTIÓN DE INCIDENCIAS DE GESTOR</span>
 			</h2>
 		</div>
 
@@ -59,12 +58,12 @@
 				<div class="table-responsive">
 					<table class="table table-hover table-striped table-bordered">
 						<tr>
-							<th>Id</th>
-							<th>Fecha inicio</th>
-							<th>Fecha fin</th>
-							<th>Motivo</th>
+							<th>Fecha</th>
+							<th>Hora de entrada</th>
+							<th>Hora de salida</th>
+							<th>Minutos trabajados</th>
 							<th>Estado</th>
-							<th>Acciones</th>
+							<th>Incidencia</th>
 						</tr>
 
 						<c:forEach var="fichaje" items="${fichaje}">
@@ -106,7 +105,7 @@
 
 
 
-		<a class="btn btn-danger" href="/InTime/home" role="button">Volver</a>
+		<a class="btn btn-danger" href="/InTime/" role="button">Volver</a>
 
 
 
@@ -118,7 +117,7 @@
 		</div>
 
 	
-
+								</div>
 	<!-- /container -->
 
 	<!-- Bootstrap core JavaScript

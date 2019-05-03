@@ -1,11 +1,14 @@
 package com.MarcosEscalona.InTime.model;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Empleado {
 
 	private int id;
 	private int rol; //Empleado 1, gestor 2, administrador 3
+	private String correo;
+	private String clave;
 	private String NIF;
 	private String nombre;
 	private String apellido1;
@@ -19,6 +22,23 @@ public class Empleado {
 	
 	
 	
+	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 	public String getApellido2() {
 		return apellido2;
 	}
@@ -85,13 +105,15 @@ public class Empleado {
 	public void setFechaBajaEmpresa(Date fechaBajaEmpresa) {
 		this.fechaBajaEmpresa = fechaBajaEmpresa;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", NIF=" + NIF + ", nombre=" + nombre + ", apellido1=" + apellido1
-				+ ", fechaAltaEmpresa=" + fechaAltaEmpresa + ", fechaBajaEmpresa=" + fechaBajaEmpresa + "]";
+		return "Empleado [id=" + id + ", rol=" + rol + ", correo=" + correo + ", clave=" + clave + ", NIF=" + NIF
+				+ ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", fechaAltaEmpresa="
+				+ fechaAltaEmpresa + ", fechaBajaEmpresa=" + fechaBajaEmpresa + ", imagen=" + imagen + ", calendario="
+				+ Arrays.toString(calendario) + "]";
 	}
-
 	
+
 	
 }

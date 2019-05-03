@@ -1,4 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,16 +92,7 @@
 		</div>
 
 
-
-
-
-
-
-
-		<a class="btn btn-danger" href="/InTime/" role="button">Volver</a>
-
-
-
+		<a class="btn btn-danger" href="/InTime/home" role="button">Volver</a>
 
 	</div>
 
@@ -112,7 +105,7 @@
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
 
-	</div>
+
 	<!-- /container -->
 
 	<!-- Bootstrap core JavaScript

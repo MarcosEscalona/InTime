@@ -1,14 +1,12 @@
 package com.MarcosEscalona.InTime.controller;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
 
@@ -30,20 +28,26 @@ public class FichajeController {
 	}
 	
 	@RequestMapping(value="/entradaFichaje", method=RequestMethod.GET)
-	public String entradaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, @RequestParam("fecha") String fecha) {
-		
-		//Aquí se procesa el fichaje de entrada
+	public String entradaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) {
+					
+			// Método para registrar el fichaje de entrada del empleado	
+			serviceEmpleado.fichajeEntrada(idEmpleado);
 			
-		return "fichajes/formEntradaFichaje";
+			rAttributes.addFlashAttribute("mensaje", "Fichaje de entrada registrado correctamente");
+			
+			return "redirect:/home";
 	}
 	
-	@RequestMapping(value="/salidaFichaje", method=RequestMethod.GET)
-	public String salidaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, @RequestParam("fecha") String fecha) {
-		
-		//Aquí se procesa el fichaje de salida
 	
+	@RequestMapping(value="/salidaFichaje", method=RequestMethod.GET)
+	public String salidaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) {
+					
+			// Método para registrar el fichaje de entrada del empleado	
+			serviceEmpleado.fichajeSalida(idEmpleado);
 			
-		return "fichajes/formSalidaFichaje";
+			rAttributes.addFlashAttribute("mensaje", "Fichaje de salida registrado correctamente");
+			
+			return "redirect:/home";
 	}
 	
 	

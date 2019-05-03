@@ -1,6 +1,7 @@
 package com.MarcosEscalona.InTime.controller;
 
 import com.MarcosEscalona.InTime.model.Incidencia;
+import com.MarcosEscalona.InTime.service.IEmpleadoService;
 import com.MarcosEscalona.InTime.service.IIncidenciaService;
 
 import java.text.SimpleDateFormat;
@@ -28,17 +29,22 @@ public class IncidenciaController {
 		@Autowired
 		private IIncidenciaService serviceIncidencia;
 		
+		@Autowired
+		private IEmpleadoService serviceEmpleado;
+		
 		@RequestMapping(value="/generarIncidencia", method=RequestMethod.GET)
 		public String generaIncidencia(Model model, @RequestParam("idEmpleado") int idEmpleado, @ModelAttribute Incidencia incidencia) {
 				
+				model.addAttribute("tiposIncidencia", serviceIncidencia.buscarTipoIncidencia());
 				incidencia.setIdEmpleadoGenera(idEmpleado);
 				return "incidencias/formGeneraIncidencia";
 		}
 		
+		
 		@RequestMapping(value="/gestionaIncidenciaEmpleado", method=RequestMethod.GET)
 		public String gestionaIncidenciaEmpleado(Model model, @RequestParam("idEmpleado") int idEmpleado) {
 				
-				model.addAttribute("idEmpleado", idEmpleado);
+				model.addAttribute("empleado", serviceEmpleado.buscarPorID(idEmpleado));
 				return "incidencias/formGestionaIncidenciaEmpleado";
 		}
 		
