@@ -30,7 +30,6 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 			empleado1.setApellido2("Cano");
 			empleado1.setFechaAltaEmpresa(formatter.parse("02-05-2017"));
 			empleado1.setFechaBajaEmpresa(formatter.parse("31-12-9999"));
-			empleado1.setImagen("cara.jpg");
 
 			// Agregamos Empleado
 			lista.add(empleado1);

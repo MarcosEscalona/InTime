@@ -1,5 +1,6 @@
 package com.MarcosEscalona.InTime.controller;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,25 @@ public class HomeController {
 		
 		model.addAttribute("empleados", empleados);
 		model.addAttribute("fechaActual", dateFormat.format(new Date()));
+		
+		
+		/*
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());		
+		System.out.println(timestamp.getTime());
+		System.out.println(timestamp);
+		
+		  public static int[] decodificar(long timestamp) {
+    	int[] partes = new int[6];
+    	partes[SECOND] = (int)(numero % 60);     numero /= 60;
+    	partes[MINUTE] = (int)(numero % 60);     numero /= 60;
+    	partes[HOUR]   = (int)(numero % 24);     numero /= 24;
+    	partes[DAY]    = (int)(numero % 31 + 1); numero /= 31;
+    	partes[MONTH]  = (int)(numero % 12 + 1); numero /= 12;
+    	partes[YEAR]   = (int)(numero);
+    	return partes;
+  		}
+		 */
+		
 		return "home";
 	}
 	
@@ -37,16 +57,7 @@ public class HomeController {
 		return "frontal";
 	}
 	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public String buscar(@RequestParam("fecha") String fecha, Model model){
-		
-		List<Empleado> empleados = serviceEmpleado.buscarEmpleado();
 
-		model.addAttribute("fechaBusqueda", fecha);
-		model.addAttribute("empleados", empleados);
-		
-		return "home";
-	}
 	
 
 	

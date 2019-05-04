@@ -60,7 +60,7 @@
 							aria-describedby="sizing-addon1" required>
 					</div>
 					<br> <a class="btn btn-lg btn-primary btn-block btn-signin"
-						id="IngresoLog" href="${urlRoot }/home" role="button">Acceder</a>
+						id="IngresoLog" href="${urlRoot }home" role="button">Acceder</a>
 
 				</form>
 			</div>
