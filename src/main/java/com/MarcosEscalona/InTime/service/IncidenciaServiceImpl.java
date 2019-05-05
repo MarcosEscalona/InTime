@@ -27,18 +27,5 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 		return null;
 	}
 
-	@Override
-	public List<String> buscarTipoIncidencia() {
-		
-		List<String> tipoIncidencias = new LinkedList<>();
-		tipoIncidencias.add("Vacaciones");
-		tipoIncidencias.add("Baja medica");
-		tipoIncidencias.add("Otras ausencias");
-		tipoIncidencias.add("Errores en el marcaje");
-		
-		return tipoIncidencias;
-	}
-
-
 
 }

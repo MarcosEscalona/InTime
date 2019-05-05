@@ -12,8 +12,8 @@ public class Empleado {
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
-	private Date fechaAltaEmpresa;
-	private Date fechaBajaEmpresa;
+	private String fechaAltaEmpresa;
+	private String fechaBajaEmpresa;
 	
 	
 	public String getCorreo() {
@@ -72,16 +72,16 @@ public class Empleado {
 	public void setApellido1(String apellido1) {
 		this.apellido1 = apellido1;
 	}
-	public Date getFechaAltaEmpresa() {
+	public String getFechaAltaEmpresa() {
 		return fechaAltaEmpresa;
 	}
-	public void setFechaAltaEmpresa(Date fechaAltaEmpresa) {
+	public void setFechaAltaEmpresa(String fechaAltaEmpresa) {
 		this.fechaAltaEmpresa = fechaAltaEmpresa;
 	}
-	public Date getFechaBajaEmpresa() {
+	public String getFechaBajaEmpresa() {
 		return fechaBajaEmpresa;
 	}
-	public void setFechaBajaEmpresa(Date fechaBajaEmpresa) {
+	public void setFechaBajaEmpresa(String fechaBajaEmpresa) {
 		this.fechaBajaEmpresa = fechaBajaEmpresa;
 	}
 

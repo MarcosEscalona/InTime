@@ -10,6 +10,5 @@ public interface IIncidenciaService {
 
 	void guardar(Incidencia incidencia);
 	
-	List<String> buscarTipoIncidencia();
 
 }

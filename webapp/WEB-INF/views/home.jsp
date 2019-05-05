@@ -77,7 +77,7 @@
 								</tr>
 								<tr>
 									<th scope="row">Fecha alta sistema</th>
-									<td><span class="label label-default"><fmt:formatDate value="${empleado.fechaAltaEmpresa}" pattern="dd-MM-yyyy"/></span></td>
+									<td><span class="label label-default">${empleado.fechaAltaEmpresa }</span></td>
 								</tr>
 							</tbody>
 						</table>

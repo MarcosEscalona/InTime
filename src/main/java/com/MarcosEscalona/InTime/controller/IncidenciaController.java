@@ -35,7 +35,6 @@ public class IncidenciaController {
 		@RequestMapping(value="/generarIncidencia", method=RequestMethod.GET)
 		public String generaIncidencia(Model model, @RequestParam("idEmpleado") int idEmpleado, @ModelAttribute Incidencia incidencia) {
 				
-				model.addAttribute("tiposIncidencia", serviceIncidencia.buscarTipoIncidencia());
 				incidencia.setIdEmpleadoGenera(idEmpleado);
 				return "incidencias/formGeneraIncidencia";
 		}
@@ -63,9 +62,10 @@ public class IncidenciaController {
 				incidencia.setEstado(0);
 				incidencia.setIdEmpleadoGestor(-1); //Aún no asignado
 				// Falta definir, para cada INC, el id del empleado que genera
+			
 					
 				serviceIncidencia.guardar(incidencia);
-				// Guardar objeto en BD, hallando método para definir número id de incidencia
+				// Guardar objeto en BD, id de incidencia autoincremental
 				
 
 				rAttributes.addFlashAttribute("mensaje", "Incidencia registrada correctamente");

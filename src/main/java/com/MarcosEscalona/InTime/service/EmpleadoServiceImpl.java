@@ -19,25 +19,19 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		
 		System.out.println("Hola");
 
-		try {
-			lista = new LinkedList<>();
+		lista = new LinkedList<>();
 
-			Empleado empleado1 = new Empleado();
-			empleado1.setId(1);
-			empleado1.setNIF("54098765F");
-			empleado1.setNombre("Manuel");
-			empleado1.setApellido1("Fernandez");
-			empleado1.setApellido2("Cano");
-			empleado1.setFechaAltaEmpresa(formatter.parse("02-05-2017"));
-			empleado1.setFechaBajaEmpresa(formatter.parse("31-12-9999"));
+		Empleado empleado1 = new Empleado();
+		empleado1.setId(1);
+		empleado1.setNIF("54098765F");
+		empleado1.setNombre("Manuel");
+		empleado1.setApellido1("Fernandez");
+		empleado1.setApellido2("Cano");
+		empleado1.setFechaAltaEmpresa("02-05-2017");
+		empleado1.setFechaBajaEmpresa("31-12-9999");
 
-			// Agregamos Empleado
-			lista.add(empleado1);
-
-		} catch (ParseException e) {
-			System.out.println("Error: " + e.getMessage());
-
-		}
+		// Agregamos Empleado
+		lista.add(empleado1);
 	}
 	
 	

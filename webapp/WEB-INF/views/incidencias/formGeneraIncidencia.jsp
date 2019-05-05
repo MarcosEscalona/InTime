@@ -66,7 +66,7 @@
 				<div class="col-sm-3">
 					<div class="form-group">
 						<label for="titulo">Fecha de comienzo</label> <form:input
-							type="date" id="fechaComienzo" path="fechaComienzo" required="required" />
+							type="date" id="fechaComienzo" path="fechaComienzo" required="required" min="2019-05-01" max="2019-12-31" />
 
 					</div>
 				</div>
@@ -74,15 +74,18 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="titulo">Fecha de finalización</label> <form:input
-								type="date" id="fechaFin" path="fechaFin" required="required" />
+								type="date" id="fechaFin" path="fechaFin" required="required" min="2019-05-01" max="2019-12-31" />
 
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="tipo">Tipo</label>
-							 <form:select id="tipo" path="tipo"
-								class="form-control" items= "${tiposIncidencia }">
+							 <form:select id="tipo" path="tipo"	class="form-control">
+								<option value="1">Vacaciones</option>
+								<option value="2">Baja medica</option>
+								<option value="3">Otras ausencias</option>
+								<option value="4">Errores en el marcaje</option>
 							</form:select>
 						</div>
 					</div>
