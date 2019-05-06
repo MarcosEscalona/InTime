@@ -1,6 +1,7 @@
 package com.MarcosEscalona.InTime.controller;
 
 import com.MarcosEscalona.InTime.model.Incidencia;
+import com.MarcosEscalona.InTime.repository.IncidenciaRepository;
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
 import com.MarcosEscalona.InTime.service.IIncidenciaService;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,7 @@ public class IncidenciaController {
 				return "incidencias/formGestionaIncidenciaEmpleado";
 		}
 		
+	
 		@PostMapping(value="/guardarIncidencia")
 		// Fechas en YYYY-MM-DD
 		public String guardarIncidencia(@ModelAttribute Incidencia incidencia, BindingResult erroresBinding, RedirectAttributes rAttributes) {
@@ -60,14 +63,11 @@ public class IncidenciaController {
 				}
 			
 				incidencia.setEstado(0);
-				incidencia.setIdEmpleadoGestor(-1); //Aún no asignado
-				// Falta definir, para cada INC, el id del empleado que genera
+				incidencia.setIdEmpleadoGestor(-1); 
 			
-					
-				serviceIncidencia.guardar(incidencia);
 				// Guardar objeto en BD, id de incidencia autoincremental
-				
-
+				serviceIncidencia.guardar(incidencia);
+			
 				rAttributes.addFlashAttribute("mensaje", "Incidencia registrada correctamente");
 				rAttributes.addAttribute("idEmpleado", incidencia.getIdEmpleadoGenera());
 			

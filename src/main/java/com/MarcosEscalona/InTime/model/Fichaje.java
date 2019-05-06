@@ -1,7 +1,17 @@
 package com.MarcosEscalona.InTime.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="fichaje")
 public class Fichaje {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private int idEmpleado;
 	private long timestamp; 

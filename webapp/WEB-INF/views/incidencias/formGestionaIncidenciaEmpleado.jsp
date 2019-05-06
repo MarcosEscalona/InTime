@@ -43,8 +43,8 @@
 					Id: ${empleado.id } <br> Nombre: ${empleado.nombre } <br>
 					Apellido 1 : ${empleado.apellido1 } <br> Apellido 2:
 					${empleado.apellido2 } <br> Fecha Alta Sistema:
-					<fmt:formatDate value="${empleado.fechaAltaEmpresa}" pattern="dd-MM-yyyy"/><br> Fecha Baja Sistema:
-					<fmt:formatDate value="${empleado.fechaBajaEmpresa}" pattern="dd-MM-yyyy"/>
+					${empleado.fechaAltaEmpresa}<br> Fecha Baja Sistema:
+					${empleado.fechaBajaEmpresa}
 				</p>
 
 			</div>
