@@ -6,9 +6,9 @@ import com.MarcosEscalona.InTime.model.Incidencia;
 
 public interface IIncidenciaService {
 
-	Incidencia buscarIncidenciaporId();
-
 	void guardar(Incidencia incidencia);
+
+	List<Incidencia> buscarIncidenciasPorIdEmpleado(int idEmpleado);
 	
 
 }

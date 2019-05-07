@@ -64,38 +64,73 @@
 							<th>Fecha fin</th>
 							<th>Motivo</th>
 							<th>Estado</th>
+							<th>Id Gestor</th>
+							<th>Comentario</th>
 							<th>Acciones</th>
 						</tr>
 
-						<c:forEach var="fichaje" items="${fichaje}">
+						<c:forEach var="incidencia" items="${incidencias}">
 							<tr>
-								<td><fmt:formatDate pattern="dd-MM-yyyy"
-										value="${fichaje.fecha}" />
+								<td>${incidencia.id}</td>
+								<td>${incidencia.fechaComienzo}</td>
+								<td>${incidencia.fechaFin}</td>
 
+								<c:choose>
+									<c:when test="${incidencia.tipo eq '1'}">
+										<td><span class="label label-warning">Vacaciones</span></td>
+									</c:when>
+									<c:when test="${incidencia.estado eq '2'}">
+										<td><span class="label label-warning">Enfermedad</span></td>
+									</c:when>
+									<c:when test="${incidencia.estado eq '3'}">
+										<td><span class="label label-warning">Otras ausencias</span></td>
+									</c:when>
+									<c:when test="${incidencia.estado eq '4'}">
+										<td><span class="label label-warning">Exento por errores</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span class="label label-danger">Sin datos</span></td>
+									</c:otherwise>
+								</c:choose>
 
-									<td>${fichaje.horaEntrada}</td>
-				<td>${fichaje.horaSalida}</td>
-				<td>${fichaje.minutosTrabajados}</td>
-				<c:choose>
-					<c:when test="${fichaje.estado eq 'Activa'}">
-						<td><span class="label label-success">${fichaje.estado}</span></td>
-					</c:when>
-					<c:otherwise>
-						<td><span class="label label-danger">${fichaje.estado}</span></td>
-					</c:otherwise>
-					</c:choose>
-				<td>
-					<a href="#" class="btn btn-success btn-sm" role="button"
-									title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href="#" class="btn btn-danger btn-sm" role="button"
-									title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
-				</td>
-			  </tr>
-			</c:forEach>
-            
-        </table>
-      </div>
-				
+								<c:choose>
+									<c:when test="${incidencia.estado eq '0'}">
+										<td><span class="label label-warning">En espera</span></td>
+									</c:when>
+									<c:when test="${incidencia.estado eq '1'}">
+										<td><span class="label label-success">Aceptada</span></td>
+									</c:when>
+									<c:when test="${incidencia.estado eq '2'}">
+										<td><span class="label label-danger">Denegada</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span class="label label-danger">Sin datos</span></td>
+									</c:otherwise>
+								</c:choose>
+
+								<c:choose>
+									<c:when test="${fichaje.estado eq 'Activa'}">
+										<td><span class="label label-success">${fichaje.estado}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span class="label label-danger">${fichaje.estado}</span></td>
+									</c:otherwise>
+								</c:choose>
+								
+								<td>${incidencia.idEmpleadoGestor}</td>
+								<td>${incidencia.comentario}</td>
+								
+								<td><a href="#" class="btn btn-success btn-sm"
+									role="button" title="Edit"><span
+										class="glyphicon glyphicon-pencil"></span></a> <a href="#"
+									class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+										class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+						</c:forEach>
+
+					</table>
+				</div>
+
 			</div>
 		</div>
 
@@ -112,12 +147,13 @@
 
 
 	</div>
-	<hr class="featurette-divider"> <!-- FOOTER -->
-		<div class="container marketing">
-			<jsp:include page="../includes/footer.jsp"></jsp:include>
-		</div>
+	<hr class="featurette-divider">
+	<!-- FOOTER -->
+	<div class="container marketing">
+		<jsp:include page="../includes/footer.jsp"></jsp:include>
+	</div>
 
-	
+
 
 	<!-- /container -->
 
@@ -128,6 +164,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script>
 	<script src="${urlPublic}/tinymce/tinymce.min.js"></script>
-	
+
 </body>
 </html>

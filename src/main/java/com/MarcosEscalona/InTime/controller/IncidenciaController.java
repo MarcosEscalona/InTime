@@ -6,7 +6,9 @@ import com.MarcosEscalona.InTime.service.IEmpleadoService;
 import com.MarcosEscalona.InTime.service.IIncidenciaService;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -45,7 +47,16 @@ public class IncidenciaController {
 		@RequestMapping(value="/gestionaIncidenciaEmpleado", method=RequestMethod.GET)
 		public String gestionaIncidenciaEmpleado(Model model, @RequestParam("idEmpleado") int idEmpleado) {
 				
+				//Se añaden los datos del empleado
 				model.addAttribute("empleado", serviceEmpleado.buscarPorID(idEmpleado));
+				
+				//Se recuperan las incidencias que ha generado
+				List<Incidencia> listaIncidencias = new ArrayList<Incidencia>();
+				listaIncidencias = serviceIncidencia.buscarIncidenciasPorIdEmpleado(idEmpleado);
+				
+				model.addAttribute("incidencias", listaIncidencias);
+				
+				
 				return "incidencias/formGestionaIncidenciaEmpleado";
 		}
 		
