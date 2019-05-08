@@ -1,6 +1,7 @@
 package com.MarcosEscalona.InTime.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -36,30 +37,53 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 	@Override
 	public List<Incidencia> buscarIncidenciasPorIdEmpleado(int idEmpleado) {
 		
-		//ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
-		//IncidenciaRepository rep = context.getBean("IncidenciaRepository", IncidenciaRepository.class);
+		@SuppressWarnings("resource")
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		IncidenciaRepository rep = context.getBean("IncidenciaRepository", IncidenciaRepository.class);
 		
-		//creating session. This you can create in your own way.
-		Configuration cfg = new Configuration();
-		cfg.configure("root-context.xml");
-		cfg.addAnnotatedClass(Incidencia.class);
-
-		SessionFactory factory = cfg.buildSessionFactory();
-		Session session = factory.openSession();
-
-		//**creating CriteriaBuilder**
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<Incidencia> criteria = builder.createQuery(Incidencia.class);
-		Root<Incidencia> IncidenciaRoot=criteria.from(Incidencia.class);
-		criteria.select(IncidenciaRoot);
-
-		//**Adding where clause**
-		criteria.where(builder.equal(IncidenciaRoot.get("idEmpleadoGenera"), idEmpleado));
-		List<Incidencia> incidenciaList=session.createQuery(criteria).getResultList();
-			
-
+		List<Incidencia> incidenciaList = rep.findByIdEmpleadoGenera(idEmpleado);
+		
 		return incidenciaList;
 	}
+	
+	@Override
+	public Optional<Incidencia> buscarIncidencia(int idIncidencia) {
+		
+		@SuppressWarnings("resource")
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		IncidenciaRepository rep = context.getBean("IncidenciaRepository", IncidenciaRepository.class);
+		
+		Optional <Incidencia> incidencia = rep.findById(idIncidencia);
+			
 
+		return incidencia;
+	}
+	
+	@Override
+	public void borrarIncidencia(int idIncidencia) {
+		
+		@SuppressWarnings("resource")
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		IncidenciaRepository rep = context.getBean("IncidenciaRepository", IncidenciaRepository.class);
+		
+		rep.deleteById(idIncidencia);
+			
+
+		return;
+	}
+
+	@Override
+	public Iterable<Incidencia> recuperarTodasIncidencias() {
+		
+		@SuppressWarnings("resource")
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		IncidenciaRepository rep = context.getBean("IncidenciaRepository", IncidenciaRepository.class);
+		
+		//Todos los registros
+		
+		Iterable<Incidencia> listaIncidencias = rep.findAll();
+		
+		return listaIncidencias;
+	}
 
 }

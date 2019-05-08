@@ -31,7 +31,7 @@
 
 		<div class="row">
 			<h2 class="text text-center">
-				<span class="label label-default">GENERACIÓN DE INCIDENCIA</span>
+				<span class="label label-default">GENERACIÓN / MODIFICACION DE INCIDENCIA</span>
 			</h2>
 		</div>
 		

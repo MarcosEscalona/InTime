@@ -31,6 +31,12 @@
 				<span class="label label-default">GESTIÓN DE INCIDENCIAS</span>
 			</h2>
 		</div>
+		
+		<c:if test="${mensaje!=null }">
+      	
+      		<div class='alert alert-success' role="alert">${ mensaje}</div>
+      	
+      	</c:if>
 
 		<hr class="featurette-divider">
 
@@ -107,23 +113,14 @@
 										<td><span class="label label-danger">Sin datos</span></td>
 									</c:otherwise>
 								</c:choose>
-
-								<c:choose>
-									<c:when test="${fichaje.estado eq 'Activa'}">
-										<td><span class="label label-success">${fichaje.estado}</span></td>
-									</c:when>
-									<c:otherwise>
-										<td><span class="label label-danger">${fichaje.estado}</span></td>
-									</c:otherwise>
-								</c:choose>
-								
+	
 								<td>${incidencia.idEmpleadoGestor}</td>
 								<td>${incidencia.comentario}</td>
 								
-								<td><a href="#" class="btn btn-success btn-sm"
+								<td><a href="incidencias/modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
-										class="glyphicon glyphicon-pencil"></span></a> <a href="#"
-									class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+										class="glyphicon glyphicon-pencil"></span></a> 
+									<a href="#"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>
 						</c:forEach>
