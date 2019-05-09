@@ -42,7 +42,7 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">INCIDENCIAS REGISTRADAS</h3>
+				<h3 class="panel-title">GESTIÓN DE INCIDENCIAS REGISTRADAS</h3>
 			</div>
 			<div class="panel-body">
 
@@ -101,11 +101,13 @@
 								<td>${incidencia.idEmpleadoGestor}</td>
 								<td>${incidencia.comentario}</td>
 								
+								<c:when test="${incidencia.estado not eq '0'}">
 								<td><a href="incidencias/modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
 									<a href="#"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
+								</c:when>	
 							</tr>
 						</c:forEach>
 

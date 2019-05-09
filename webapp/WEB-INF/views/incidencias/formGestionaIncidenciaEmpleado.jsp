@@ -28,7 +28,7 @@
 
 		<div class="row">
 			<h2 class="text text-center">
-				<span class="label label-default">GESTIÓN DE INCIDENCIAS</span>
+				<span class="label label-default">GESTIÓN DE INCIDENCIAS PROPIAS</span>
 			</h2>
 		</div>
 		
@@ -120,7 +120,7 @@
 								<td><a href="incidencias/modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
-									<a href="#"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+									<a href="incidencias/borrarIncidencia"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>
 						</c:forEach>
