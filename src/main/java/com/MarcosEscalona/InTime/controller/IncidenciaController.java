@@ -8,8 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -56,7 +54,7 @@ public class IncidenciaController {
 				}
 			
 				incidencia.setEstado(0);
-				incidencia.setIdEmpleadoGestor(-1); 
+				incidencia.setIdEmpleadoGestor(0); 
 			
 				// Guardar objeto en BD, id de incidencia autoincremental
 				serviceIncidencia.guardar(incidencia);
@@ -106,7 +104,7 @@ public class IncidenciaController {
 				
 				model.addAttribute("incidencia", serviceIncidencia.buscarIncidencia(idIncidencia));
 				
-				return "incidencias/formGeneraIncidencia";
+				return "/formGeneraIncidencia";
 		}
 		
 		@RequestMapping(value="/borrarIncidencia", method=RequestMethod.GET)
@@ -123,7 +121,7 @@ public class IncidenciaController {
 				serviceIncidencia.borrarIncidencia(idIncidencia);
 				rAttributes.addFlashAttribute("mensaje", "Incidencia borrada correctamente");
 				
-				return "redirect:incidencias/formGestionaIncidenciaEmpleado";
+				return "redirect:/gestionaIncidenciaEmpleado";
 		}
 		
 		

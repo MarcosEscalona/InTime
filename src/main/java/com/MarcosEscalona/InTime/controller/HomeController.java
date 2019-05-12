@@ -1,6 +1,5 @@
 package com.MarcosEscalona.InTime.controller;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.MarcosEscalona.InTime.model.Empleado;
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
 
@@ -52,8 +49,10 @@ public class HomeController {
 		return "home";
 	}
 	
+		
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String InTime() {
+
 		return "frontal";
 	}
 	

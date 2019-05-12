@@ -13,7 +13,9 @@ public class Fichaje {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+
 	private int idEmpleado;
+	
 	private long timestamp; 
 	//1 vacaciones, 2 enfermedad, 3 otras ausencias, 4 exento por errores en el marcaje, 5 entrada, 6 salida
 	private int tipo;

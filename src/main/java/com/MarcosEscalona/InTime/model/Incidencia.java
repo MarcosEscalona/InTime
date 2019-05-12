@@ -13,8 +13,12 @@ public class Incidencia {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private int idEmpleadoGenera;
+	
+
 	public int idEmpleadoGestor;
+	
 	//Fechas de inicio y final sobre la que se comunica la incidencia
 	private String fechaComienzo;
 	private String fechaFin;

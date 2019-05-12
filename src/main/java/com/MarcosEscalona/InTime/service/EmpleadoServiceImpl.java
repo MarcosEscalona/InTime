@@ -1,7 +1,5 @@
 package com.MarcosEscalona.InTime.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,8 +13,6 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	private List<Empleado> lista = null;
 	
 	public EmpleadoServiceImpl() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		
 		System.out.println("Hola");
 
 		lista = new LinkedList<>();
