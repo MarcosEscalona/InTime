@@ -3,12 +3,18 @@ package com.MarcosEscalona.InTime.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.MarcosEscalona.InTime.model.Empleado;
+import com.MarcosEscalona.InTime.model.Fichaje;
+import com.MarcosEscalona.InTime.repository.FichajeRepository;
 
 @Service
 public class EmpleadoServiceImpl implements IEmpleadoService {
+	
+	@Autowired
+	private FichajeRepository fichajeRepo;
 
 	private List<Empleado> lista = null;
 	
@@ -48,19 +54,40 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return null;
 	}
 
-
+	
+	
+	@Override
+	public List<Fichaje> buscarFichajesPorIdEmpleado(int idEmpleado) {
+		
+		List<Fichaje> fichajeList = fichajeRepo.findByIdEmpleado(idEmpleado);
+		
+		return fichajeList;
+	}
+	
+	
 	@Override
 	public void fichajeEntrada(int idEmpleado) {
-		// Aquí la lógica para registrar el fichaje de entrada de un empleado
-		System.out.println("Fichaje de entrada registrado correctamente");
+		
+		Fichaje fichaje = new Fichaje();
+		fichaje.setIdEmpleado(idEmpleado);
+		fichaje.setTipo(5);
+		
+		fichajeRepo.save(fichaje);
+
+
 		
 	}
 
 
 	@Override
 	public void fichajeSalida(int idEmpleado) {
-		// Aquí la lógica para registrar el fichaje de salida de un empleado
-		System.out.println("Fichaje de salida registrado correctamente");
+		
+		Fichaje fichaje = new Fichaje();
+		fichaje.setIdEmpleado(idEmpleado);
+		fichaje.setTipo(6);
+		
+		fichajeRepo.save(fichaje);
+
 	}
 
 }

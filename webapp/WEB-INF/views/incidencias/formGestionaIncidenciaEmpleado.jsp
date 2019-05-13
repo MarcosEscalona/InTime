@@ -71,7 +71,7 @@
 							<th>Motivo</th>
 							<th>Estado</th>
 							<th>Id Gestor</th>
-							<th>Comentario</th>
+							<th>Comentario del Gestor</th>
 							<th>Acciones</th>
 						</tr>
 
@@ -83,16 +83,16 @@
 
 								<c:choose>
 									<c:when test="${incidencia.tipo eq '1'}">
-										<td><span class="label label-warning">Vacaciones</span></td>
+										<td><span class="label label-info">Vacaciones</span></td>
 									</c:when>
-									<c:when test="${incidencia.estado eq '2'}">
-										<td><span class="label label-warning">Enfermedad</span></td>
+									<c:when test="${incidencia.tipo eq '2'}">
+										<td><span class="label label-info">Enfermedad</span></td>
 									</c:when>
-									<c:when test="${incidencia.estado eq '3'}">
-										<td><span class="label label-warning">Otras ausencias</span></td>
+									<c:when test="${incidencia.tipo eq '3'}">
+										<td><span class="label label-info">Otras ausencias</span></td>
 									</c:when>
-									<c:when test="${incidencia.estado eq '4'}">
-										<td><span class="label label-warning">Exento por errores</span></td>
+									<c:when test="${incidencia.tipo eq '4'}">
+										<td><span class="label label-info">Exento por errores</span></td>
 									</c:when>
 									<c:otherwise>
 										<td><span class="label label-danger">Sin datos</span></td>
@@ -115,13 +115,17 @@
 								</c:choose>
 	
 								<td>${incidencia.idEmpleadoGestor}</td>
-								<td>${incidencia.comentario}</td>
+								<td width="5%">${incidencia.comentario}</td>
 								
-								<td><a href="incidencias/modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
+								<c:choose>
+								<c:when test="${incidencia.estado eq '0'}">
+								<td><a href="modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
-									<a href="incidencias/borrarIncidencia"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+									<a href="borrarIncidencia/${incidencia.id }/${empleado.id }" onclick=' return confirm("¿Seguro que desea eliminar?") '	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
+								</c:when>
+								</c:choose>
 							</tr>
 						</c:forEach>
 

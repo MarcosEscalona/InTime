@@ -15,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -76,7 +78,6 @@ public class IncidenciaController {
 				List<Incidencia> listaIncidencias = new ArrayList<Incidencia>();
 				listaIncidencias = serviceIncidencia.buscarIncidenciasPorIdEmpleado(idEmpleado);
 				
-				//Será necesario añadir cada incidencia individualizada al modelo??
 				model.addAttribute("incidencias", listaIncidencias);
 				
 				
@@ -91,7 +92,6 @@ public class IncidenciaController {
 				Iterable<Incidencia> listaIncidencias = new ArrayList<Incidencia>();
 				listaIncidencias = serviceIncidencia.recuperarTodasIncidencias();
 				
-				//Será necesario añadir cada incidencia individualizada al modelo??
 				model.addAttribute("incidencias", listaIncidencias);
 				
 				
@@ -104,24 +104,18 @@ public class IncidenciaController {
 				
 				model.addAttribute("incidencia", serviceIncidencia.buscarIncidencia(idIncidencia));
 				
-				return "/formGeneraIncidencia";
+				return "incidencias/formGeneraIncidencia";
 		}
 		
-		@RequestMapping(value="/borrarIncidencia", method=RequestMethod.GET)
-		public String borraIncidencia(Model model, @RequestParam("idIncidencia") int idIncidencia, @ModelAttribute Incidencia incidencia, BindingResult erroresBinding, RedirectAttributes rAttributes) {
+		@GetMapping(value="/borrarIncidencia/{idIncidencia}/{idEmpleado}")
+		public String borraIncidencia(@PathVariable("idIncidencia") int idIncidencia, @PathVariable("idEmpleado")  int idEmpleado, RedirectAttributes rAttributes) {
 				
-				for (ObjectError error : erroresBinding.getAllErrors()) {
-					System.out.println(error.getDefaultMessage());
-				}
-		
-				if (erroresBinding.hasErrors()) {
-					return "incidencias/formGestionaIncidenciaEmpleado";
-				}
-			
 				serviceIncidencia.borrarIncidencia(idIncidencia);
-				rAttributes.addFlashAttribute("mensaje", "Incidencia borrada correctamente");
+					
+				rAttributes.addFlashAttribute("mensaje", "Incidencia correctamente eliminada");
+				rAttributes.addAttribute("idEmpleado", idEmpleado);
 				
-				return "redirect:/gestionaIncidenciaEmpleado";
+				return "redirect:/incidencias/gestionaIncidenciaEmpleado";
 		}
 		
 		

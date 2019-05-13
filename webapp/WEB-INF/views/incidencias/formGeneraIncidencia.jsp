@@ -56,14 +56,21 @@
 
 		<form:form action="${urlForm }" method="post" modelAttribute="incidencia">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="form-group">
-						<label for="titulo">Código ID Empleado</label> 
+						<label for="titulo">ID incidencia</label> 
+						<form:input type="text" path="id" id="id" readonly="true"  />
+					</div>
+				</div>
+			
+				<div class="col-sm-2">
+					<div class="form-group">
+						<label for="titulo">ID Empleado</label> 
 						<form:input type="text" path="idEmpleadoGenera" id="idEmpleadoGenera" readonly="true"  />
 					</div>
 				</div>
 				
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="form-group">
 						<label for="titulo">Fecha de comienzo</label> <form:input
 							type="date" id="fechaComienzo" path="fechaComienzo" required="required" min="2019-05-01" max="2019-12-31" />
@@ -71,7 +78,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-group">
 							<label for="titulo">Fecha de finalización</label> <form:input
 								type="date" id="fechaFin" path="fechaFin" required="required" min="2019-05-01" max="2019-12-31" />
@@ -90,15 +97,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="form-group">
-							<label for="detalle">Comentario</label>
-							<form:textarea class="form-control" path="comentario" id="comentario"
-								rows="3"></form:textarea>
-						</div>
-					</div>
-				</div>
+			
 
 				<button type="submit" class="btn btn-danger">Guardar</button>
 		</form:form>

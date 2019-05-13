@@ -40,54 +40,65 @@
 			</div>
 			<div class="panel-body">
 				<p>
-					Id: ${empleado.id } <br>
-					Nombre: ${empleado.nombre } <br> 
-					Apellido 1 : ${empleado.apellido1 } <br>
-					Apellido 2: ${empleado.apellido2 } <br> 
-					Fecha Alta Sistema:${empleado.fechaAltaEmpresa} <br>
-					Fecha Baja Sistema:${empleado.fechaBajaEmpresa}
+					Id: ${empleado.id } <br> Nombre: ${empleado.nombre } <br>
+					Apellido 1 : ${empleado.apellido1 } <br> Apellido 2:
+					${empleado.apellido2 } <br> Fecha Alta
+					Sistema:${empleado.fechaAltaEmpresa} <br> Fecha Baja
+					Sistema:${empleado.fechaBajaEmpresa}
 				</p>
 
 			</div>
 		</div>
-		
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">FICHAJES REGISTRADOS</h3>
 			</div>
 			<div class="panel-body">
-				
+
 				<div class="table-responsive">
-        <table class="table table-hover table-striped table-bordered">
-            <tr>
-                <th>Fecha</th>
-                <th>Hora de entrada</th>
-                <th>Hora de salida</th>
-                <th>Minutos trabajados</th>
-                <th>Estado</th>
-                <th>Incidencia</th>
-            </tr>
-            
-            <c:forEach var="fichaje" items="${fichaje}">
-			  <tr>
-				<td><fmt:formatDate pattern="dd-MM-yyyy" value="${fichaje.fecha}" />
-				<td>${fichaje.horaEntrada}</td>
-				<td>${fichaje.horaSalida}</td>
-				<td>${fichaje.minutosTrabajados}</td>
-				<c:choose>
-					<c:when test="${fichaje.estado eq 'Activa'}">
-						<td><span class="label label-success">${fichaje.estado}</span></td>
-					</c:when>
-					<c:otherwise>
-						<td><span class="label label-danger">${fichaje.estado}</span></td>
-					</c:otherwise>
-					</c:choose>
-				  </tr>
-			</c:forEach>
-            
-        </table>
-      </div>
-				
+					<table class="table table-hover table-striped table-bordered">
+						<tr>
+							<th>Id</th>
+							<th>Marca de tiempo</th>
+							<th>Tipo</th>
+
+						</tr>
+
+						<c:forEach var="fichaje" items="${fichajes}">
+							<tr>
+								<td>${fichaje.id}</td>
+								<td>${fichaje.timestamp}</td>
+								<c:choose>
+									<c:when test="${fichaje.tipo eq '1'}">
+										<td><span class="label label-info">Vacaciones</span></td>
+									</c:when>
+									<c:when test="${fichaje.tipo eq '2'}">
+										<td><span class="label label-info">Enfermedad</span></td>
+									</c:when>
+									<c:when test="${fichaje.tipo eq '3'}">
+										<td><span class="label label-info">Otras ausencias</span></td>
+									</c:when>
+									<c:when test="${fichaje.tipo eq '4'}">
+										<td><span class="label label-info">Exento por
+												errores</span></td>
+									</c:when>
+									<c:when test="${fichaje.tipo eq '5'}">
+										<td><span class="label label-info">Entrada</span></td>
+									</c:when>
+									<c:when test="${fichaje.tipo eq '6'}">
+										<td><span class="label label-info">Salida</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span class="label label-danger">Sin datos</span></td>
+									</c:otherwise>
+								</c:choose>
+							</tr>
+						</c:forEach>
+
+					</table>
+				</div>
+
 			</div>
 		</div>
 

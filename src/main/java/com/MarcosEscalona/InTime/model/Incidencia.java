@@ -26,7 +26,7 @@ public class Incidencia {
 	private int tipo;
 	// Estado de la incidencia: 0 en espera, 1 aceptada, 2 denegada
 	private int estado;
-	private String comentario;
+	private String comentario = "Incidencia aun sin comentario del Gestor";
 		
 	
 	public Incidencia() {
