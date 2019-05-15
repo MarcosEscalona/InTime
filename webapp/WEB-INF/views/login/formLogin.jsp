@@ -33,11 +33,7 @@
 		</div>
 		<div class="row page-header"></div>
 
-		<c:if test="${mensaje!=null }">
 
-			<div class='alert alert-success' role="alert">${ mensaje}</div>
-
-		</c:if>
 
 		<!-- Marketing messaging -->
 		<div class="container marketing">
@@ -45,22 +41,32 @@
 			<div class="ContentForm col-md-4"></div>
 
 			<div class="ContentForm col-md-4">
-				<form action="" method="post" name="FormEntrar">
+				<form action="${urlRoot}login" method="POST">
+
+					<c:if test="${param.error!= null}">
+						<img src="${urlPublic}/images/error.png" width="48" height="48"
+							class="center">
+						<h4 class="form-signin-heading" style="color: red">Acceso
+							denegado</h4>
+					</c:if>
+
+
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon" id="sizing-addon1"><i
 							class="glyphicon glyphicon-envelope"></i></span> <input type="email"
-							class="form-control" name="correo" placeholder="Correo"
+							class="form-control" name="username" placeholder="Correo"
 							id="Correo" aria-describedby="sizing-addon1" required>
 					</div>
 					<br>
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon" id="sizing-addon1"><i
 							class="glyphicon glyphicon-lock"></i></span> <input type="password"
-							name="contra" class="form-control" placeholder="******"
+							name="password" class="form-control" placeholder="******"
 							aria-describedby="sizing-addon1" required>
 					</div>
-					<br> <a class="btn btn-lg btn-primary btn-block btn-signin"
-						id="IngresoLog" href="${urlRoot }home" role="button">Acceder</a>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 
 				</form>
 			</div>

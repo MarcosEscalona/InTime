@@ -53,7 +53,6 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String InTime() {
 
-		System.out.println("Hola2");
 		return "frontal";
 	}
 	

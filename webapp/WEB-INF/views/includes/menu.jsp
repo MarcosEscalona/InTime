@@ -1,11 +1,12 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <spring:url value="/" var="urlRoot" />
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 
-		<sec:authorize access="isAnonymous()">
+		<sec:authorize access="!isAuthenticated()">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -23,6 +24,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="${urlRoot}login/loginInTime">Login</a></li>
+					<li><a href="${urlRoot}login/logout">Salir</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -32,7 +34,7 @@
 
 
 
-		<sec:authorize access="hasAnyAuthority('usuario')">
+		<sec:authorize access="hasRole('USUARIO')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -54,7 +56,7 @@
 			<!--/.nav-collapse -->
 		</sec:authorize>
 
-		<sec:authorize access="hasAnyAuthority('gestor')">
+		<sec:authorize access="hasAnyAuthority('GESTOR')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -82,7 +84,7 @@
 
 
 
-		<sec:authorize access="hasAnyAuthority('administrador')">
+		<sec:authorize access="hasAnyAuthority('ADMINISTRADOR')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"

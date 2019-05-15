@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <b:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:b="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   xmlns:b="http://www.springframework.org/schema/beans" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
      http://www.springframework.org/schema/beans/spring-beans.xsd
      http://www.springframework.org/schema/security 
      http://www.springframework.org/schema/security/spring-security.xsd">
 
+	
+
 	<http auto-config="true">
+ 
 		<!--Declaramos todos los recursos que estaran protegidos -->
-		<intercept-url pattern="/fichajes/*"
-			access="hasAnyAuthority('usuario', 'gestor', 'administrador')" />
-		<intercept-url pattern="/incidencias/*"
-			access="hasAnyAuthority('usuario', 'gestor', 'administrador'))" />
-		<intercept-url pattern="/usuarios/*"
-			access="hasAnyAuthority('usuario', 'gestor', 'administrador'))" />
-		<intercept-url pattern="/home.jsp"
-			access="hasAnyAuthority('usuario', 'gestor', 'administrador'))" />
+
+		<intercept-url pattern="/fichajes/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/incidencias/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
+
 			
 	<!-- Custom login form -->
-		<form-login login-page="/login/loginInTime" /> 
+		<form-login login-page="/login/loginInTime" default-target-url="/home" /> 
 	
 	</http>
+	
+
 
 	<authentication-manager>
 
 		<authentication-provider>
 			<user-service>
-				<user name="Usuario" password="{noop}1234"
-					authorities="usuario" />
-				<user name="Gestor" password="{noop}1234" authorities="gestor" />
-				<user name="Administrador" password="{noop}1234"
-					authorities="administrador" />
+				<user name="usuario@usuario" password="{noop}1234"
+					authorities="USUARIO" />
+				<user name="gestor@gestor" password="{noop}1234" authorities="GESTOR" />
+				<user name="administrador@administrador" password="{noop}1234"
+					authorities="ADMINISTRADOR" />
 			</user-service>
 		</authentication-provider>
 
