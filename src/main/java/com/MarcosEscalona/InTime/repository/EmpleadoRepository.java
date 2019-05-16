@@ -8,4 +8,6 @@ import com.MarcosEscalona.InTime.model.Empleado;
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 
+	Empleado findBycorreo(String correo);
+
 }

@@ -103,7 +103,7 @@
 		</div>
 
 
-		<a class="btn btn-danger" href="/InTime/home" role="button">Volver</a>
+		<a class="btn btn-danger" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 
 	</div>
 

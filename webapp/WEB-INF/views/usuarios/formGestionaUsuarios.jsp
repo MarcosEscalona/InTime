@@ -43,7 +43,7 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">USUARIOS REGISTRADOS</h3>
+				<h3 class="panel-title">GESTIÓN DE USUARIOS</h3>
 			</div>
 			<div class="panel-body">
 
@@ -68,13 +68,13 @@
 								<td>${empleado.id}</td>
 								
 								<c:choose>
-									<c:when test="${empleado.rol eq '1'}">
+									<c:when test="${empleado.rol eq 1}">
 										<td><span class="label label-info">Usuario</span></td>
 									</c:when>
-									<c:when test="${empleado.rol eq '2'}">
+									<c:when test="${empleado.rol eq 2}">
 										<td><span class="label label-info">Gestor</span></td>
 									</c:when>
-									<c:when test="${empleado.rol eq '3'}">
+									<c:when test="${empleado.rol eq 3}">
 										<td><span class="label label-info">Administrador</span></td>
 									</c:when>
 
@@ -92,11 +92,11 @@
 								<td width="5%">${empleado.fechaBajaEmpresa}</td>
 								
 								<c:choose>
-								<c:when test="${empleado.fechaBajaEmpresa not eq '0'}">
+								<c:when test="${empleado.fechaBajaEmpresa != '0'}">
 								<td><a href=# class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
-									<a href=# class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+								<a href="borrarEmpleado/${empleado.id }" onclick=' return confirm("¿Seguro que desea eliminar?") '	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
 								</c:when>
 								</c:choose>
@@ -117,7 +117,7 @@
 
 
 
-		<a class="btn btn-danger" href="/InTime/home" role="button">Volver</a>
+		<a class="btn btn-danger" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 
 
 

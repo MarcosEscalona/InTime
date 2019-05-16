@@ -42,7 +42,7 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">GESTIÓN DE INCIDENCIAS REGISTRADAS</h3>
+				<h3 class="panel-title">GESTION GLOBAL DE INCIDENCIAS</h3>
 			</div>
 			<div class="panel-body">
 
@@ -54,6 +54,7 @@
 							<th>Fecha fin</th>
 							<th>Motivo</th>
 							<th>Estado</th>
+							<th>Id Empleado</th>
 							<th>Id Gestor</th>
 							<th>Comentario</th>
 							<th>Acciones</th>
@@ -97,17 +98,22 @@
 										<td><span class="label label-danger">Sin datos</span></td>
 									</c:otherwise>
 								</c:choose>
-	
-								<td>${incidencia.idEmpleadoGestor}</td>
-								<td>${incidencia.comentario}</td>
 								
-								<c:when test="${incidencia.estado not eq '0'}">
-								<td><a href="incidencias/modificarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
-									role="button" title="Edit"><span
-										class="glyphicon glyphicon-pencil"></span></a> 
-									<a href="#"	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
-										class="glyphicon glyphicon-trash"></span></a></td>
+								<td>${incidencia.idEmpleadoGenera}</td>
+								<td>${incidencia.idEmpleadoGestor}</td>
+								<td contenteditable='true'>${incidencia.comentario}</td>
+								
+								<c:choose>
+								<c:when test="${incidencia.estado eq '0'}">
+								<td><a href="incidencias/aceptarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
+									role="button" title="Aceptar"><span
+										class="glyphicon glyphicon-thumbs-up"></span></a>
+										<a href="incidencias/rechazarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-danger btn-sm"
+									role="button" title="Rechazar"><span
+										class="glyphicon glyphicon-thumbs-down"></span></a>  
 								</c:when>	
+								</c:choose>
+
 							</tr>
 						</c:forEach>
 
@@ -124,7 +130,7 @@
 
 
 
-		<a class="btn btn-danger" href="/InTime/home" role="button">Volver</a>
+		<a class="btn btn-danger" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 
 
 

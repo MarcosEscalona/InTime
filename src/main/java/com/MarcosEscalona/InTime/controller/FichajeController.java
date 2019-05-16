@@ -44,7 +44,7 @@ public class FichajeController {
 			
 			rAttributes.addFlashAttribute("mensaje", "Fichaje de entrada registrado correctamente");
 			
-			return "redirect:/home";
+			return "redirect:/usuarios/formUsuario";
 	}
 	
 	
@@ -56,7 +56,7 @@ public class FichajeController {
 			
 			rAttributes.addFlashAttribute("mensaje", "Fichaje de salida registrado correctamente");
 			
-			return "redirect:/home";
+			return "redirect:/usuarios/formUsuario";
 	}
 	
 	

@@ -24,7 +24,6 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="${urlRoot}login/loginInTime">Login</a></li>
-					<li><a href="${urlRoot}login/logout">Salir</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -32,9 +31,7 @@
 
 
 
-
-
-		<sec:authorize access="hasRole('USUARIO')">
+		<sec:authorize access="hasAnyAuthority('1')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -46,17 +43,20 @@
 				</button>
 				<a class="navbar-brand" style="color: #FF0000">Avengers Life -
 					In Time</a>
+				<a class="navbar-brand" style="color: #00AACC">Usuario: <sec:authentication property="principal.username"/></a>
+				<a class="navbar-brand" style="color: #00AACC">Rol: Usuario</a>
 			</div>
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="${urlRoot}login/logout">Salir</a></li>
 				</ul>
+				
 			</div>
 			<!--/.nav-collapse -->
 		</sec:authorize>
 
-		<sec:authorize access="hasAnyAuthority('GESTOR')">
+		<sec:authorize access="hasAnyAuthority('2')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -68,13 +68,15 @@
 				</button>
 				<a class="navbar-brand" style="color: #FF0000">Avengers Life -
 					In Time</a>
+					<a class="navbar-brand" style="color: #00AACC">Usuario: <sec:authentication property="principal.username"/></a>
+					<a class="navbar-brand" style="color: #00AACC">Rol: Gestor</a>
 			</div>
 
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="${urlRoot}login/loginInTime">Gestión de
-							incidencias globales</a></li>
+					<li><a href="${urlRoot}incidencias/gestionaIncidenciaGestor">Gestión de
+							incidencias</a></li>
 					<li><a href="${urlRoot}login/logout">Salir</a></li>
 				</ul>
 			</div>
@@ -84,7 +86,7 @@
 
 
 
-		<sec:authorize access="hasAnyAuthority('ADMINISTRADOR')">
+		<sec:authorize access="hasAnyAuthority('3')">
 
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -96,14 +98,16 @@
 				</button>
 				<a class="navbar-brand" style="color: #FF0000">Avengers Life -
 					In Time</a>
+					<a class="navbar-brand" style="color: #00AACC">Usuario: <sec:authentication property="principal.username"/></a>
+					<a class="navbar-brand" style="color: #00AACC">Rol: Administrador</a>
 			</div>
 
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="${urlRoot}login/loginInTime">Gestión de
-							incidencias globales</a></li>
-					<li><a href="${urlRoot}login/loginInTime">Administración
+					<li><a href="${urlRoot}incidencias/gestionaIncidenciaGestor">Gestión de
+							incidencias</a></li>
+					<li><a href="${urlRoot}usuarios/gestionaUsuario">Administración
 							de usuarios</a></li>
 					<li><a href="${urlRoot}login/logout">Salir</a></li>
 				</ul>

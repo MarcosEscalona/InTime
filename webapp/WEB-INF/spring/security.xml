@@ -14,13 +14,13 @@
  
 		<!--Declaramos todos los recursos que estaran protegidos -->
 
-		<intercept-url pattern="/fichajes/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
-		<intercept-url pattern="/incidencias/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
-		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('USUARIO', 'GESTOR', 'ADMINISTRADOR')" />
+		<intercept-url pattern="/fichajes/*" access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/incidencias/*" access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('1', '2', '3')" />
 
 			
 	<!-- Custom login form -->
-		<form-login login-page="/login/loginInTime" default-target-url="/home" /> 
+		<form-login login-page="/login/loginInTime" default-target-url="/usuarios/formUsuario" /> 
 	
 	</http>
 	
@@ -31,10 +31,10 @@
 		<authentication-provider>
 			<user-service>
 				<user name="usuario@usuario" password="{noop}1234"
-					authorities="USUARIO" />
-				<user name="gestor@gestor" password="{noop}1234" authorities="GESTOR" />
+					authorities="1" />
+				<user name="gestor@gestor" password="{noop}1234" authorities="2" />
 				<user name="administrador@administrador" password="{noop}1234"
-					authorities="ADMINISTRADOR" />
+					authorities="3" />
 			</user-service>
 		</authentication-provider>
 

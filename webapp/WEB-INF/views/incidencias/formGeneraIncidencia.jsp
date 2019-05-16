@@ -102,7 +102,7 @@
 				<button type="submit" class="btn btn-danger">Guardar</button>
 		</form:form>
 
-		<a class="btn btn-info" href="/InTime/home" role="button">Volver</a>
+		<a class="btn btn-info" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 
 		<hr class="featurette-divider">
 

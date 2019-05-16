@@ -34,7 +34,7 @@
 				<img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
 				<h4>¡Permiso denegado!</h4>				
 				<br>
-				<button class="btn btn-success" onclick="goBack()">Volver</button>
+				<a class="btn btn-danger" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 			</div>
 		</div>
 

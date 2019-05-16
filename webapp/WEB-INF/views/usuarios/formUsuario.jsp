@@ -22,7 +22,7 @@
 
 <body>
 
-	<jsp:include page="includes/menu.jsp"></jsp:include>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
 
 	<div class="container theme-showcase" role="main">
 
@@ -42,11 +42,6 @@
 		<div class="container marketing">
 
 			<div class="row page-header">
-
-				<c:forEach items="${empleados }" var="empleado">
-
-
-
 
 					<div class="col-sm-6">
 						<table class="table">
@@ -90,30 +85,30 @@
 							<tbody>
 								<tr>
 									<th><a class="btn btn-success"
-										href="fichajes/entradaFichaje?idEmpleado=${empleado.id }"
+										href="../fichajes/entradaFichaje?idEmpleado=${empleado.id }"
 										role="button">Fichaje diario de entrada</a></th>
 								</tr>
 								<tr>
 									<th><a class="btn btn-danger"
-										href="fichajes/salidaFichaje?idEmpleado=${empleado.id }&fecha=${fechaActual}"
+										href="../fichajes/salidaFichaje?idEmpleado=${empleado.id }&fecha=${fechaActual}"
 										role="button">Fichaje diario de salida</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-info"
-										href="fichajes/historicoFichaje?idEmpleado=${empleado.id }"
+										href="../fichajes/historicoFichaje?idEmpleado=${empleado.id }"
 										role="button">Consultar histórico de fichajes</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-warning"
-										href="incidencias/generarIncidencia?idEmpleado=${empleado.id }"
+										href="../incidencias/generarIncidencia?idEmpleado=${empleado.id }"
 										role="button">Crear incidencia</a></th>
 
 								</tr>
 								<tr>
 									<th><a class="btn btn-primary"
-										href="incidencias/gestionaIncidenciaEmpleado?idEmpleado=${empleado.id }"
+										href="../incidencias/gestionaIncidenciaEmpleado?idEmpleado=${empleado.id }"
 										role="button">Gestionar mis incidencias</a></th>
 
 								</tr>
@@ -125,15 +120,12 @@
 
 					</div>
 
-
-				</c:forEach>
-
 			</div>
 
 		</div>
 
 		<div class="container marketing">
-			<jsp:include page="includes/footer.jsp"></jsp:include>
+			<jsp:include page="../includes/footer.jsp"></jsp:include>
 		</div>
 
 	</div>

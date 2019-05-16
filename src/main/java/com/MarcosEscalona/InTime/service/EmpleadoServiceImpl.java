@@ -2,12 +2,15 @@ package com.MarcosEscalona.InTime.service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.MarcosEscalona.InTime.model.Empleado;
 import com.MarcosEscalona.InTime.model.Fichaje;
+import com.MarcosEscalona.InTime.model.Incidencia;
+import com.MarcosEscalona.InTime.repository.EmpleadoRepository;
 import com.MarcosEscalona.InTime.repository.FichajeRepository;
 
 @Service
@@ -15,6 +18,9 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 	@Autowired
 	private FichajeRepository fichajeRepo;
+	
+	@Autowired
+	private EmpleadoRepository empleadoRepo;
 
 	private List<Empleado> lista = null;
 	
@@ -38,13 +44,6 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 	
 	@Override
-	public List<Empleado> buscarEmpleado() {
-
-		return lista;
-	}
-
-
-	@Override
 	public Empleado buscarPorID(int idEmpleado) {
 		for(Empleado e: lista) {
 			if (e.getId() == idEmpleado) {
@@ -55,6 +54,39 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	}
 
 	
+	
+	
+	
+	
+	
+	@Override
+	public Empleado buscarEmpleado(String correo) {
+
+		Empleado empleado = empleadoRepo.findBycorreo(correo);
+
+		return empleado;
+	}
+
+	
+	
+	
+	@Override
+	public Iterable<Empleado> recuperarTodosEmpleados() {
+		
+		//Todos los registros
+		
+		Iterable<Empleado> listaEmpleados = empleadoRepo.findAll();
+		
+		return listaEmpleados;
+	}
+	
+	@Override
+	public void borrarEmpleado(int idEmpleado) {
+		
+		empleadoRepo.deleteById(idEmpleado);
+		
+		return;
+	}
 	
 	@Override
 	public List<Fichaje> buscarFichajesPorIdEmpleado(int idEmpleado) {
@@ -74,8 +106,6 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		
 		fichajeRepo.save(fichaje);
 
-
-		
 	}
 
 

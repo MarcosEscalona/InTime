@@ -40,7 +40,7 @@
 				</div>				
 							
 				<br>
-				<button class="btn btn-success" onclick="goBack()">Volver</button>
+				<a class="btn btn-danger" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
 			</div>
 		</div>
 		
