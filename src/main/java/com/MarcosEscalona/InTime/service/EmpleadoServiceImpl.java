@@ -1,15 +1,11 @@
 package com.MarcosEscalona.InTime.service;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.MarcosEscalona.InTime.model.Empleado;
 import com.MarcosEscalona.InTime.model.Fichaje;
-import com.MarcosEscalona.InTime.model.Incidencia;
 import com.MarcosEscalona.InTime.repository.EmpleadoRepository;
 import com.MarcosEscalona.InTime.repository.FichajeRepository;
 
@@ -22,38 +18,10 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	@Autowired
 	private EmpleadoRepository empleadoRepo;
 
-	private List<Empleado> lista = null;
 	
 	public EmpleadoServiceImpl() {
-		System.out.println("Hola");
 
-		lista = new LinkedList<>();
-
-		Empleado empleado1 = new Empleado();
-		empleado1.setId(1);
-		empleado1.setNIF("54098765F");
-		empleado1.setNombre("Manuel");
-		empleado1.setApellido1("Fernandez");
-		empleado1.setApellido2("Cano");
-		empleado1.setFechaAltaEmpresa("02-05-2017");
-		empleado1.setFechaBajaEmpresa("31-12-9999");
-
-		// Agregamos Empleado
-		lista.add(empleado1);
 	}
-	
-	
-	@Override
-	public Empleado buscarPorID(int idEmpleado) {
-		for(Empleado e: lista) {
-			if (e.getId() == idEmpleado) {
-				return e;
-			}
-		}
-		return null;
-	}
-
-	
 	
 	
 	
@@ -118,6 +86,27 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		
 		fichajeRepo.save(fichaje);
 
+	}
+
+
+	@Override
+	public Empleado buscarPorID(int idEmpleado) {
+
+		Empleado empleado = empleadoRepo.findByid(idEmpleado);
+		
+		return empleado;
+	}
+	
+	@Override
+	public void guardar(Empleado empleado) {
+		
+
+		empleadoRepo.save(empleado);
+		
+		System.out.println("Guadando el objeto " + empleado + " en la base de datos.");
+		
+		
+		return;
 	}
 
 }

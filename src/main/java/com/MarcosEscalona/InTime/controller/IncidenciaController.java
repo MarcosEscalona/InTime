@@ -56,7 +56,8 @@ public class IncidenciaController {
 				}
 			
 				incidencia.setEstado(0);
-				incidencia.setIdEmpleadoGestor(0); 
+				//Generico administrador
+				incidencia.setIdEmpleadoGestor(7); 
 			
 				// Guardar objeto en BD, id de incidencia autoincremental
 				serviceIncidencia.guardar(incidencia);

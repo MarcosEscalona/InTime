@@ -1,6 +1,8 @@
 package com.MarcosEscalona.InTime.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import com.MarcosEscalona.InTime.model.Empleado;
 import com.MarcosEscalona.InTime.model.Fichaje;
 
@@ -12,4 +14,5 @@ public interface IEmpleadoService {
 	List<Fichaje> buscarFichajesPorIdEmpleado(int idEmpleado);
 	Iterable<Empleado> recuperarTodosEmpleados();
 	void borrarEmpleado(int idEmpleado);
+	void guardar(Empleado empleado);
 }

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Gestión de incidencias (empleado)</title>
+<title>Gestión de usuarios</title>
 <spring:url value="/resources" var="urlPublic"></spring:url>
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -93,7 +93,7 @@
 								
 								<c:choose>
 								<c:when test="${empleado.fechaBajaEmpresa != '0'}">
-								<td><a href=# class="btn btn-success btn-sm"
+								<td><a href=modificarUsuario?idEmpleado=${empleado.id } class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
 								<a href="borrarEmpleado/${empleado.id }" onclick=' return confirm("¿Seguro que desea eliminar?") '	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
