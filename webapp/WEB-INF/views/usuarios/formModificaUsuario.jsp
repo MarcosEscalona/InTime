@@ -78,6 +78,13 @@
 					</div>
 				</div>
 				
+								<div class="col-sm-2">
+					<div class="form-group">
+						<label for="titulo">Activo</label>
+						<form:input type="text" path="activo" id="activo" />
+					</div>
+				</div>
+				
 
 						<form:input type="text" path="clave" id="clave" hidden="true" />
 

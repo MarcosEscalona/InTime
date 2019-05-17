@@ -16,6 +16,7 @@ public class Empleado {
 	private int rol; //Empleado 1, gestor 2, administrador 3
 	private String correo;
 	private String clave;
+	private int activo = 1;
 	private String NIF;
 	private String nombre;
 	private String apellido1;
@@ -38,6 +39,14 @@ public class Empleado {
 
 	public void setClave(String clave) {
 		this.clave = clave;
+	}
+	
+	public int getActivo() {
+		return activo;
+	}
+
+	public void setActivo(int activo) {
+		this.activo = activo;
 	}
 
 	public String getApellido2() {
@@ -95,10 +104,12 @@ public class Empleado {
 
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", rol=" + rol + ", correo=" + correo + ", clave=" + clave + ", NIF=" + NIF
-				+ ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", fechaAltaEmpresa="
-				+ fechaAltaEmpresa + ", fechaBajaEmpresa=" + fechaBajaEmpresa + "]";
+		return "Empleado [id=" + id + ", rol=" + rol + ", correo=" + correo + ", clave=" + clave + ", activo=" + activo
+				+ ", NIF=" + NIF + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
+				+ ", fechaAltaEmpresa=" + fechaAltaEmpresa + ", fechaBajaEmpresa=" + fechaBajaEmpresa + "]";
 	}
+
+
 
 
 

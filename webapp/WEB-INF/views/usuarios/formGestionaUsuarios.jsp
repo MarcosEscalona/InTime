@@ -53,6 +53,7 @@
 							<th>Id</th>
 							<th>Rol</th>
 							<th>Correo</th>
+							<th>Activo</th>
 							<th>NIF</th>
 							<th>Nombre</th>
 							<th>Apellido 1</th>
@@ -84,6 +85,7 @@
 								</c:choose>
 
 								<td>${empleado.correo}</td>
+								<td>${empleado.activo}</td>
 								<td>${empleado.NIF}</td>
 								<td>${empleado.nombre}</td>
 								<td>${empleado.apellido1}</td>
@@ -109,7 +111,6 @@
 
 			</div>
 		</div>
-
 
 
 

@@ -1,9 +1,6 @@
 package com.MarcosEscalona.InTime.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.MarcosEscalona.InTime.model.Empleado;
-import com.MarcosEscalona.InTime.model.Incidencia;
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
 
 @Controller
@@ -29,7 +25,6 @@ public class EmpleadoController {
 	
 	@Autowired
 	private IEmpleadoService serviceEmpleado;
-	
 	
 	@RequestMapping(value="/formUsuario", method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model, Authentication authentication) {
@@ -80,6 +75,7 @@ public class EmpleadoController {
 			if (erroresBinding.hasErrors()) {
 				return "usuarios/formModificaUsuario";
 			}
+			
 		
 			System.out.println(empleado.toString());
 			serviceEmpleado.guardar(empleado);
@@ -111,8 +107,9 @@ public class EmpleadoController {
 			return "redirect:/usuarios/gestionaUsuario";
 	}
 	
-	
-	
-
 
 }
+		
+
+
+
