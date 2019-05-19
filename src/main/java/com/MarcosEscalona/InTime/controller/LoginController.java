@@ -21,9 +21,11 @@ public class LoginController {
 	public String loginInTime() {
 
 		// Utilidad para encriptar contraseñas
+		/*
 		String password = "1234";
 		String encriptado = encoder.encode(password);
 		System.out.println("Password encriptado: " + encriptado);
+		*/
 		
 		return "login/formLogin";
 	}

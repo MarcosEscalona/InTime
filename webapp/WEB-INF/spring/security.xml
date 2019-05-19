@@ -16,10 +16,29 @@
 
 		<intercept-url pattern="/fichajes/*"
 			access="hasAnyAuthority('1', '2', '3')" />
-		<intercept-url pattern="/incidencias/*"
+			
+		<intercept-url pattern="/incidencias/generarIncidencia"
 			access="hasAnyAuthority('1', '2', '3')" />
-		<intercept-url pattern="/usuarios/*"
+		<intercept-url pattern="/incidencias/guardarIncidencia"
 			access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/incidencias/gestionaIncidenciaEmpleado"
+			access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/incidencias/modificarIncidencia"
+			access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/incidencias/gestionaIncidenciaGestor"
+			access="hasAnyAuthority('2', '3')" />
+			
+		<intercept-url pattern="/usuarios/formUsuario"
+			access="hasAnyAuthority('1', '2', '3')" />
+		<intercept-url pattern="/usuarios/modificarUsuario"
+			access="hasAnyAuthority('3')" />
+		<intercept-url pattern="/usuarios/guardarUsuario"
+			access="hasAnyAuthority('3')" />
+		<intercept-url pattern="/usuarios/gestionaUsuario"
+			access="hasAnyAuthority('3')" />
+		<intercept-url pattern="/usuarios/borrarUsuario/*"
+			access="hasAnyAuthority('3')" />
+
 
 
 		<!-- Custom login form -->

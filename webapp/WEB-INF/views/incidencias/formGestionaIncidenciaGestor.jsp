@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Gestión de incidencias (empleado)</title>
+<title>Gestión global de incidencias</title>
 <spring:url value="/resources" var="urlPublic"></spring:url>
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">

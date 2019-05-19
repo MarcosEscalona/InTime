@@ -98,7 +98,7 @@
 								<td><a href=modificarUsuario?idEmpleado=${empleado.id } class="btn btn-success btn-sm"
 									role="button" title="Edit"><span
 										class="glyphicon glyphicon-pencil"></span></a> 
-								<a href="borrarEmpleado/${empleado.id }" onclick=' return confirm("¿Seguro que desea eliminar?") '	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+								<a href="borrarUsuario/${empleado.id }" onclick=' return confirm("¿Seguro que desea eliminar?") '	class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
 										class="glyphicon glyphicon-trash"></span></a></td>
 								</c:when>
 								</c:choose>

@@ -88,7 +88,7 @@ public class EmpleadoController {
 	@RequestMapping(value = "/gestionaUsuario", method = RequestMethod.GET)
 	public String gestionaUsuario(Model model) {
 		
-		//Se recupera el total de incidencias generadas
+		//Se recupera el total de empleados existentes
 		Iterable<Empleado> listaEmpleados = new ArrayList<Empleado>();
 		listaEmpleados = serviceEmpleado.recuperarTodosEmpleados();
 		
@@ -97,7 +97,7 @@ public class EmpleadoController {
 		return "usuarios/formGestionaUsuarios";
 	}
 	
-	@GetMapping(value="/borrarEmpleado/{idEmpleado}")
+	@GetMapping(value="/borrarUsuario/{idEmpleado}")
 	public String borraEmpleado(@PathVariable("idEmpleado")  int idEmpleado, RedirectAttributes rAttributes) {
 			
 			serviceEmpleado.borrarEmpleado(idEmpleado);
