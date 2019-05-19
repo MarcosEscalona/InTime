@@ -1,5 +1,6 @@
 package com.MarcosEscalona.InTime.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.MarcosEscalona.InTime.model.Empleado;
 import com.MarcosEscalona.InTime.model.Fichaje;
+import com.MarcosEscalona.InTime.repository.FichajeRepository;
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
+import com.MarcosEscalona.InTime.util.Util;
 
 @Controller
 @RequestMapping("/fichajes")
@@ -20,6 +24,11 @@ public class FichajeController {
 	
 	@Autowired
 	private IEmpleadoService serviceEmpleado;
+	
+	@Autowired
+	private FichajeRepository fichajeRepo;
+	
+	Util u;
 	
 	@RequestMapping(value="/historicoFichaje", method=RequestMethod.GET)
 	public String historicoFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado) {
@@ -37,23 +46,72 @@ public class FichajeController {
 	}
 	
 	@RequestMapping(value="/entradaFichaje", method=RequestMethod.GET)
-	public String entradaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) {
+	public String entradaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) throws ParseException {
 					
-			// Método para registrar el fichaje de entrada del empleado	
-			serviceEmpleado.fichajeEntrada(idEmpleado);
+			Fichaje fichaje = new Fichaje();
+			fichaje.setIdEmpleado(idEmpleado);
+			fichaje.setTipo(5);
+			fichaje.setFechaString(Util.calendarToStringDiaMesAnioHoraMinuto(fichaje.getTimestamp()));
 			
-			rAttributes.addFlashAttribute("mensaje", "Fichaje de entrada registrado correctamente");
+			//Comprobar que el empleado está de alta a la fecha del fichaje
+			int estaDeAlta = serviceEmpleado.comprobarEmpleadoEstaDeAlta(fichaje, idEmpleado);
 			
-			return "redirect:/usuarios/formUsuario";
+			if(estaDeAlta == 0) {
+				rAttributes.addFlashAttribute("mensaje", "No estás activo en el sistema en la fecha actual");
+				return "redirect:/usuarios/formUsuario";
+			}
+			
+			//Comprobar que no ha fichado ya antes
+			if(serviceEmpleado.comprobarNoFichajeEntradaMismoDia(fichaje)==1)
+			{
+				rAttributes.addFlashAttribute("mensaje", "Ya tienes registrado un fichaje de entrada con fecha de hoy o estás exento");
+				return "redirect:/usuarios/formUsuario";
+			}
+			else {
+
+				fichajeRepo.save(fichaje);
+				rAttributes.addFlashAttribute("mensaje", "Fichaje de entrada registrado correctamente");
+			
+			return "redirect:/usuarios/formUsuario";}
 	}
 	
 	
 	@RequestMapping(value="/salidaFichaje", method=RequestMethod.GET)
-	public String salidaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) {
-					
-			// Método para registrar el fichaje de entrada del empleado	
-			serviceEmpleado.fichajeSalida(idEmpleado);
+	public String salidaFichaje(Model model, @RequestParam("idEmpleado") int idEmpleado, RedirectAttributes rAttributes) throws ParseException {
+		
+			Fichaje fichaje = new Fichaje();
+			fichaje.setIdEmpleado(idEmpleado);
+			fichaje.setTipo(6);
+			fichaje.setFechaString(Util.calendarToStringDiaMesAnioHoraMinuto(fichaje.getTimestamp()));
 			
+			//Comprobar que el empleado está de alta a la fecha del fichaje
+			int estaDeAlta = serviceEmpleado.comprobarEmpleadoEstaDeAlta(fichaje, idEmpleado);
+			
+			if(estaDeAlta == 0) {
+				rAttributes.addFlashAttribute("mensaje", "No estás activo en el sistema en la fecha actual");
+				return "redirect:/usuarios/formUsuario";
+			}
+			
+			
+		
+			// Comprobar que ha fichado de entrada en el mismo día
+			if(serviceEmpleado.comprobarNoFichajeEntradaMismoDia(fichaje)==0)
+			{
+				rAttributes.addFlashAttribute("mensaje", "No has realizado fichaje de entrada en el dia de hoy");
+				return "redirect:/usuarios/formUsuario";
+			}
+		
+			// Comprobar que no ha fichado de salida antes en el mismo día
+			if(serviceEmpleado.comprobarFichajesNoEntradaMismoDia(fichaje)==1)
+			{
+				rAttributes.addFlashAttribute("mensaje", "Ya has realizado fichaje de salida o estás exento hoy");
+				return "redirect:/usuarios/formUsuario";
+			}
+
+			
+		
+
+			fichajeRepo.save(fichaje);
 			rAttributes.addFlashAttribute("mensaje", "Fichaje de salida registrado correctamente");
 			
 			return "redirect:/usuarios/formUsuario";

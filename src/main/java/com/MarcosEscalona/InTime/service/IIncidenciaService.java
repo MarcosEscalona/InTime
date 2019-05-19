@@ -1,5 +1,6 @@
 package com.MarcosEscalona.InTime.service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,7 @@ public interface IIncidenciaService {
 	void borrarIncidencia(int idIncidencia);
 
 	Iterable<Incidencia> recuperarTodasIncidencias();
+
+	int comprobarCoherenciaFechas(Incidencia incidencia) throws ParseException;
 	
 }

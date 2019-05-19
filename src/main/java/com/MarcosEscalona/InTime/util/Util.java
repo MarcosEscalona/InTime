@@ -1,34 +1,49 @@
 package com.MarcosEscalona.InTime.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Util {
-	/**
-	 * Metodo que regresa una Lista de Strings con las fechas siguientes, segun el parametro count
-	 * @param count
-	 * @return
-	 */
-	public static List<String> getNextDays(int count) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		// Today's Date
-		Date start = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DAY_OF_MONTH, count); // Next N days from now
-		Date endDate = cal.getTime();
+import org.springframework.beans.factory.annotation.Autowired;
 
-		GregorianCalendar gcal = new GregorianCalendar();
-		gcal.setTime(start);
-		List<String> nextDays = new ArrayList<String>();
-		while (!gcal.getTime().after(endDate)) {
-			Date d = gcal.getTime();
-			gcal.add(Calendar.DATE, 1);
-			nextDays.add(sdf.format(d));
-		}
-		return nextDays;
+import com.MarcosEscalona.InTime.model.Fichaje;
+import com.MarcosEscalona.InTime.service.IEmpleadoService;
+
+public class Util {
+	
+	
+	
+	public static String calendarToStringDiaMesAnioHoraMinuto(Long timestamp) {
+		
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(timestamp);
+		
+		return (c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR)+" "+c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE));
 	}
+
+	public static String calendarToStringDiaMesAnio(Long timestamp) {
+		
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(timestamp);
+		
+		return (c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR));
+	}
+	
+	public static long fechaStringConvertirMilisegundos(String fecha) throws ParseException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date date = sdf.parse(fecha); 
+		long millis = date.getTime();
+		
+		return millis;
+		
+	}
+	
+	
+	
+
+
 }

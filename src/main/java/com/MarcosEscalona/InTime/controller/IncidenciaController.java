@@ -4,6 +4,7 @@ import com.MarcosEscalona.InTime.model.Incidencia;
 import com.MarcosEscalona.InTime.service.IEmpleadoService;
 import com.MarcosEscalona.InTime.service.IIncidenciaService;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,7 +46,7 @@ public class IncidenciaController {
 	
 		@PostMapping(value="/guardarIncidencia")
 		// Fechas en YYYY-MM-DD
-		public String guardarIncidencia(@ModelAttribute Incidencia incidencia, BindingResult erroresBinding, RedirectAttributes rAttributes) {
+		public String guardarIncidencia(@ModelAttribute Incidencia incidencia, BindingResult erroresBinding, RedirectAttributes rAttributes) throws ParseException {
 						
 				for (ObjectError error : erroresBinding.getAllErrors()) {
 					System.out.println(error.getDefaultMessage());
@@ -58,6 +59,15 @@ public class IncidenciaController {
 				incidencia.setEstado(0);
 				//Generico administrador
 				incidencia.setIdEmpleadoGestor(7); 
+				
+				//Formatear las fechas a dd/mm/yyyy
+				
+				
+				//Comprobar que la fecha de inicio es menor que la fecha de fin
+				if(serviceIncidencia.comprobarCoherenciaFechas(incidencia)==0) {
+					rAttributes.addFlashAttribute("mensaje", "Error: fecha de finalización debe ser mayor o igual que fecha de inicio");
+					return "redirect:/incidencias/generarIncidencia";
+				}
 			
 				// Guardar objeto en BD, id de incidencia autoincremental
 				serviceIncidencia.guardar(incidencia);

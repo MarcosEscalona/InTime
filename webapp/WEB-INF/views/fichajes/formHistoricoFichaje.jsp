@@ -60,7 +60,7 @@
 					<table class="table table-hover table-striped table-bordered">
 						<tr>
 							<th>Id</th>
-							<th>Marca de tiempo</th>
+							<th>Fecha/Hora</th>
 							<th>Tipo</th>
 
 						</tr>
@@ -68,7 +68,7 @@
 						<c:forEach var="fichaje" items="${fichajes}">
 							<tr>
 								<td>${fichaje.id}</td>
-								<td>${fichaje.timestamp}</td>
+								<td>${fichaje.fechaString}</td>
 								<c:choose>
 									<c:when test="${fichaje.tipo eq '1'}">
 										<td><span class="label label-info">Vacaciones</span></td>

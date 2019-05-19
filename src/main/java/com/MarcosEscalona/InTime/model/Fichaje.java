@@ -16,7 +16,9 @@ public class Fichaje {
 
 	private int idEmpleado;
 	
-	private long timestamp; 
+	private long timestamp = (System.currentTimeMillis()); 
+	
+	String fechaString;
 	
 	//1 vacaciones, 2 enfermedad, 3 otras ausencias, 4 exento por errores en el marcaje, 5 entrada, 6 salida
 	private int tipo;
@@ -47,10 +49,23 @@ public class Fichaje {
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
+	
+	
+	
+	public String getFechaString() {
+		return fechaString;
+	}
+	public void setFechaString(String fechaString) {
+		this.fechaString = fechaString;
+	}
 	@Override
 	public String toString() {
-		return "Fichaje [id=" + id + ", idEmpleado=" + idEmpleado + ", timestamp=" + timestamp + ", tipo=" + tipo + "]";
+		return "Fichaje [id=" + id + ", idEmpleado=" + idEmpleado + ", timestamp=" + timestamp + ", fechaString="
+				+ fechaString + ", tipo=" + tipo + "]";
 	}
+	
+	
+
 
 	
 

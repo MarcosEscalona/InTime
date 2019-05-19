@@ -34,24 +34,6 @@ public class EmpleadoController {
 		
 		model.addAttribute("empleado", empleado);
 		
-		
-		/*
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());		
-		System.out.println(timestamp.getTime());
-		System.out.println(timestamp);
-		
-		  public static int[] decodificar(long timestamp) {
-    	int[] partes = new int[6];
-    	partes[SECOND] = (int)(numero % 60);     numero /= 60;
-    	partes[MINUTE] = (int)(numero % 60);     numero /= 60;
-    	partes[HOUR]   = (int)(numero % 24);     numero /= 24;
-    	partes[DAY]    = (int)(numero % 31 + 1); numero /= 31;
-    	partes[MONTH]  = (int)(numero % 12 + 1); numero /= 12;
-    	partes[YEAR]   = (int)(numero);
-    	return partes;
-  		}
-		 */
-		
 		return "usuarios/formUsuario";
 	}
 
