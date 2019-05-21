@@ -19,5 +19,7 @@ public interface IIncidenciaService {
 	Iterable<Incidencia> recuperarTodasIncidencias();
 
 	int comprobarCoherenciaFechas(Incidencia incidencia) throws ParseException;
+
+	int comprobarEmpleadoEstaDeAlta(Incidencia incidencia) throws ParseException;
 	
 }

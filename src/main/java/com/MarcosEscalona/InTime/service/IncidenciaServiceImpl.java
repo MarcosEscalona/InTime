@@ -19,6 +19,9 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 	@Autowired
 	private IncidenciaRepository incidenciaRepo;
 	
+	@Autowired
+	private IEmpleadoService serviceEmpleado;
+	
 	// Constructor vacio. Unicamente para imprimir un mensaje al crearse una instancia
 	public IncidenciaServiceImpl() {
 		System.out.println("Creando una instancia de la clase IncidenciaServiceImpl");
@@ -74,7 +77,7 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 	public int comprobarCoherenciaFechas(Incidencia incidencia) throws ParseException {
 		
 		int fechasCorrectas = 1;
-		
+
 		
 		String fechaInicioIncidencia = incidencia.getFechaComienzo();
 		long fechaInicioMilis = Util.fechaStringConvertirMilisegundos(fechaInicioIncidencia);
@@ -82,10 +85,35 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 		String fechaFinIncidencia = incidencia.getFechaFin();
 		long fechaFinMilis = Util.fechaStringConvertirMilisegundos(fechaFinIncidencia);
 		
-
-		if(fechaInicioMilis < fechaFinMilis) fechasCorrectas = 0;
 	
+		if(fechaInicioMilis > fechaFinMilis) fechasCorrectas = 0;
+
 		return fechasCorrectas;
+	}
+	
+	@Override
+	public int comprobarEmpleadoEstaDeAlta(Incidencia incidencia) throws ParseException {
+		
+		int estaDeAlta = 1;
+		
+		Empleado empleado = serviceEmpleado.buscarPorID(incidencia.getIdEmpleadoGenera());
+		
+		String fechaAltaEmpleado = empleado.getFechaAltaEmpresa();
+		long fechaAltaEmpleadoMilis = Util.fechaStringConvertirMilisegundos(fechaAltaEmpleado);
+
+		String fechaBajaEmpleado = empleado.getFechaBajaEmpresa();
+		long fechaBajaEmpleadoMilis = Util.fechaStringConvertirMilisegundos(fechaBajaEmpleado);
+		
+		String fechaComienzoIncidencia = incidencia.getFechaComienzo();
+		long fechaComienzoIncidenciaMilis = Util.fechaStringConvertirMilisegundos(fechaComienzoIncidencia);
+		
+		String fechaFinIncidencia = incidencia.getFechaFin();
+		long fechaFinIncidenciaMilis = Util.fechaStringConvertirMilisegundos(fechaFinIncidencia);
+		
+
+		if(fechaComienzoIncidenciaMilis < fechaAltaEmpleadoMilis || fechaFinIncidenciaMilis > fechaBajaEmpleadoMilis) estaDeAlta = 0;
+
+		return estaDeAlta;
 	}
 
 }

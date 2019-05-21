@@ -2,6 +2,7 @@ package com.MarcosEscalona.InTime.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class FichajeController {
 		//Se recuperan los fichajes que ha realizado
 		List<Fichaje> listaFichajes = new ArrayList<Fichaje>();
 		listaFichajes = serviceEmpleado.buscarFichajesPorIdEmpleado(idEmpleado);
+		
+		//Se ordenan por fecha para su presentación
+		listaFichajes.sort(Comparator.comparing(Fichaje::getTimestamp));
 		
 		model.addAttribute("fichajes", listaFichajes);
 		

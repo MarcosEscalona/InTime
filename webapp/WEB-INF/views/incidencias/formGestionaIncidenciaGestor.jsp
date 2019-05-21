@@ -105,10 +105,10 @@
 								
 								<c:choose>
 								<c:when test="${incidencia.estado eq '0'}">
-								<td><a href="incidencias/aceptarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
+								<td><a href="aceptarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-success btn-sm"
 									role="button" title="Aceptar"><span
 										class="glyphicon glyphicon-thumbs-up"></span></a>
-										<a href="incidencias/rechazarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-danger btn-sm"
+										<a href="denegarIncidencia?idIncidencia=${incidencia.id }" class="btn btn-danger btn-sm"
 									role="button" title="Rechazar"><span
 										class="glyphicon glyphicon-thumbs-down"></span></a>  
 								</c:when>	

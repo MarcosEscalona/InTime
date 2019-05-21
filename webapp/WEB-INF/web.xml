@@ -64,7 +64,7 @@
 	</error-page>
 	
 	<error-page>
-		<error-code>509</error-code>
+		<error-code>500</error-code>
 		<location>/WEB-INF/views/error/error500.jsp</location>
 	</error-page>
 

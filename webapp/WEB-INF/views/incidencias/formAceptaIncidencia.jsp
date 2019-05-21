@@ -11,9 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Generación de incidencia</title>
+<title>Denegación de incidencia</title>
 <spring:url value="/resources" var="urlPublic"></spring:url>
-<spring:url value="/incidencias/guardarIncidencia" var="urlForm"></spring:url>
+<spring:url value="/incidencias/guardarIncidenciaAceptada" var="urlForm"></spring:url>
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
 		<div class="row">
 			<h2 class="text text-center">
-				<span class="label label-default">GENERACIÓN / MODIFICACION DE INCIDENCIA</span>
+				<span class="label label-success">ACEPTACION DE INCIDENCIA</span>
 			</h2>
 		</div>
 		
@@ -70,10 +70,11 @@
 					</div>
 				</div>
 				
+				
 				<div class="col-sm-2">
 					<div class="form-group">
 						<label for="titulo">Fecha de comienzo</label> <form:input
-							type="date" id="fechaComienzo" path="fechaComienzo" required="required" min="2019-05-01" max="2019-12-31" />
+							type="text" id="fechaComienzo" path="fechaComienzo" readonly="true" />
 
 					</div>
 				</div>
@@ -81,25 +82,29 @@
 					<div class="col-sm-2">
 						<div class="form-group">
 							<label for="titulo">Fecha de finalización</label> <form:input
-								type="date" id="fechaFin" path="fechaFin" required="required" min="2019-05-01" max="2019-12-31" />
+								type="text" id="fechaFin" path="fechaFin" readonly="true"  />
 
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-group">
-							<label for="tipo">Tipo</label>
-							 <form:select id="tipo" path="tipo"	class="form-control">
-								<option value="1">Vacaciones</option>
-								<option value="2">Baja medica</option>
-								<option value="3">Otras ausencias</option>
-								<option value="4">Errores en el marcaje</option>
-							</form:select>
+							<label for="titulo">Tipo</label>
+							 <form:input type="text" id="tipo" path="tipo" readonly="true"  />
+
+						</div>
+					</div>
+					
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="titulo">Comentario</label>
+							 <form:input type="text" id="comentario" path="comentario" size="150"  />
+
 						</div>
 					</div>
 				</div>
 			
 
-				<button type="submit" class="btn btn-danger">Guardar</button>
+				<button type="submit" class="btn btn-success">Aceptar</button>
 		</form:form>
 
 		<a class="btn btn-info" href="/InTime/usuarios/formUsuario" role="button">Volver</a>
