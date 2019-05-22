@@ -115,7 +115,7 @@
 								</c:choose>
 	
 								<td>${incidencia.idEmpleadoGestor}</td>
-								<td width="5%">${incidencia.comentario}</td>
+								<td>${incidencia.comentario}</td>
 								
 								<c:choose>
 								<c:when test="${incidencia.estado eq '0'}">

@@ -24,7 +24,6 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 	
 	// Constructor vacio. Unicamente para imprimir un mensaje al crearse una instancia
 	public IncidenciaServiceImpl() {
-		System.out.println("Creando una instancia de la clase IncidenciaServiceImpl");
 	}
 
 	@Override
@@ -33,7 +32,6 @@ public class IncidenciaServiceImpl implements IIncidenciaService {
 
 		incidenciaRepo.save(incidencia);
 		
-		System.out.println("Guadando el objeto " + incidencia + " en la base de datos.");
 		
 		
 		return;

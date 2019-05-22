@@ -65,11 +65,15 @@
 				</div>
 
 				<div class="col-sm-2">
-					<div class="form-group">
-						<label for="titulo">Rol</label>
-						<form:input type="text" path="rol" id="rol" />
+						<div class="form-group">
+							<label for="tipo">Rol</label>
+							 <form:select id="rol" path="rol"	class="form-control">
+								<option value="1">Usuario</option>
+								<option value="2">Gestor</option>
+								<option value="3">Administrador</option>
+							</form:select>
+						</div>
 					</div>
-				</div>
 
 				<div class="col-sm-2">
 					<div class="form-group">
@@ -98,21 +102,21 @@
 
 				<div class="col-sm-2">
 					<div class="form-group">
-						<label for="titulo">nombre</label>
+						<label for="titulo">Nombre</label>
 						<form:input type="text" path="nombre" id="nombre" />
 					</div>
 				</div>
 
 				<div class="col-sm-2">
 					<div class="form-group">
-						<label for="titulo">apellido1</label>
+						<label for="titulo">Apellido 1</label>
 						<form:input type="text" path="apellido1" id="apellido1" />
 					</div>
 				</div>
 
 				<div class="col-sm-2">
 					<div class="form-group">
-						<label for="titulo">apellido2</label>
+						<label for="titulo">Apellido 2</label>
 						<form:input type="text" path="apellido2" id="apellido2" />
 					</div>
 				</div>
